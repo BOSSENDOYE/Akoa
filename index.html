@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Title optimisé (50-60 caractères) -->
+    <title>Akoa - Agence Web Dakar | Création Sites & SEO Sénégal</title>
+    
+    <!-- Description (150-160 caractères) -->
+    <meta name="description" content="Agence digitale à Dakar. Création de sites web, SEO, logos et automatisation IA pour PME et startups au Sénégal. Audit gratuit. Contactez-nous !">
+    
+    <!-- Mots-clés locaux -->
+    <meta name="keywords" content="agence web Dakar, création site web Sénégal, SEO Dakar, agence digitale Dakar, développement web Sénégal">
+    
+    <!-- Géolocalisation -->
+    <meta name="geo.region" content="SN-DK">
+    <meta name="geo.placename" content="Dakar">
+    <meta name="geo.position" content="14.7167;-17.4677">
+    <meta name="ICBM" content="14.7167, -17.4677">
+    
+    <!-- Auteur et robots -->
+    <meta name="author" content="Akoa Digital">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="fr">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-links li {
+            margin: 2rem 0;
+        }
+
+        .mobile-nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #667eea;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+            filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.5));
+        }
+
+        .logo .k {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            vertical-align: middle;
+            display: inline-block;
+            transform: translateY(-3px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%), url('unnamed.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #b8b8b8;
+            margin-bottom: 3rem;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            background: #0f0f0f;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .service-card p {
+            color: #b8b8b8;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 100%);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            color: #b8b8b8;
+            line-height: 1.8;
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #b8b8b8;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            background: #0a0a0a;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact p {
+            font-size: 1.3rem;
+            color: #b8b8b8;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .secondary-btn:hover {
+            background: #667eea;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: #000;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Bouton WhatsApp flottant */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            color: white;
+        }
+
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-text {
+            white-space: nowrap;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.8);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* Responsive WhatsApp */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .whatsapp-btn {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+            
+            .whatsapp-text {
+                display: none;
+            }
+            
+            .whatsapp-btn svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            color: #fff;
+            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+        }
+        
+        .footer-logo .k {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            vertical-align: middle;
+            display: inline-block;
+            transform: translateY(-2px);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-logo {
+            font-size: 6rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #fff;
+            position: relative;
+            filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.6));
+            margin-bottom: 1.5rem;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        .loading-logo .k {
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            vertical-align: middle;
+            display: inline-block;
+            transform: translateY(-8px);
+        }
+
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.6));
+                transform: scale(1);
+            }
+            100% {
+                filter: drop-shadow(0 12px 30px rgba(102, 126, 234, 0.9));
+                transform: scale(1.05);
+            }
+        }
+
+        .loading-slogan {
+            font-size: 1.5rem;
+            color: #b8b8b8;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            z-index: 2;
+            position: relative;
+        }
+
+        .loading-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, 
+                transparent 0deg, 
+                rgba(102, 126, 234, 0.3) 45deg, 
+                #667eea 90deg, 
+                rgba(118, 75, 162, 0.8) 135deg, 
+                #764ba2 180deg, 
+                rgba(102, 126, 234, 0.3) 225deg, 
+                transparent 270deg, 
+                transparent 360deg);
+            animation: rotateCircle 3s linear infinite;
+            z-index: 1;
+        }
+
+        .loading-circle::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            z-index: -1;
+        }
+
+        .loading-circle::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes rotateCircle {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                border-color: rgba(102, 126, 234, 0.2);
+                transform: scale(1);
+            }
+            50% { 
+                border-color: rgba(102, 126, 234, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hide main content initially */
+        body.loading .hero,
+        body.loading .services,
+        body.loading .about,
+        body.loading .contact,
+        body.loading footer {
+            opacity: 0;
+            transition: opacity 0.8s ease-in;
+        }
+
+        body.loaded .hero,
+        body.loaded .services,
+        body.loaded .about,
+        body.loaded .contact,
+        body.loaded footer {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            /* Mobile Loading Screen */
+            .loading-logo {
+                font-size: 4rem;
+                letter-spacing: 2px;
+                margin-bottom: 1rem;
+            }
+
+            .loading-logo .k {
+                font-size: 5.5rem;
+                transform: translateY(-5px);
+            }
+
+
+            .loading-slogan {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+                padding: 0 2rem;
+            }
+
+            .loading-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .loading-circle::before {
+                top: 8px;
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+            }
+
+            .loading-circle::after {
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .service-card p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .contact-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            /* Mobile Loading Screen */
+            .loading-logo {
+                font-size: 3rem;
+                letter-spacing: 1px;
+            }
+
+            .loading-logo .k {
+                font-size: 4rem;
+                transform: translateY(-3px);
+            }
+
+            .loading-slogan {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .loading-circle {
+                width: 250px;
+                height: 250px;
+            }
+
+            .loading-circle::before {
+                top: 6px;
+                left: 6px;
+                right: 6px;
+                bottom: 6px;
+            }
+
+            .loading-circle::after {
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-circle"></div>
+            <div class="loading-logo">a<span class="k">K</span>oa</div>
+            <div class="loading-slogan">Transformez Votre Vision Digitale</div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">a<span class="k">K</span>oa</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-close" id="mobileNavClose">×</div>
+        <ul class="mobile-nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">À Propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Transformez Votre Vision Digitale avec Akoa </h1>
+            <p>Votre partenaire digital de confiance à Dakar • Solutions web innovantes • Design sur-mesure pour PME et startups au Sénégal</p>
+            <a href="contact.html" class="cta-button">Audit Gratuit</a>
+        </div>
+        <!-- Image de fond avec balise alt pour le SEO -->
+        <img src="unnamed.jpg" alt="Akoa agence digitale Dakar - équipe développement web Sénégal" style="display: none;">
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Nos Services Digital au Sénégal</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Création de Sites Web</h3>
+                <p>Création de sites web responsive et performants adaptés à votre identité unique.</p>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Design de Logos</h3>
+                <p>Conception de logos personnalisés qui reflètent l'essence de votre marque.</p>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Référencement SEO</h3>
+                <p>Stratégies de référencement pour booster votre visibilité en ligne.</p>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Automatisation IA</h3>
+                <p>Automatisation intelligente pour optimiser vos processus métier.</p>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Développement Sur-Mesure</h3>
+                <p>Solutions web personnalisées pour répondre à vos besoins spécifiques.</p>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Stratégie Digitale</h3>
+                <p>Accompagnement complet pour développer votre présence en ligne.</p>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Qui Sommes-Nous ?</h2>
+                <p>Nous sommes <strong>Akoa</strong>, une jeune start-up numérique basée à Dakar et fondée par <strong>Momar Bosse Ndoye</strong> et <strong>Omar Diallo Mbodj</strong>, deux étudiants passionnés par la technologie et l'innovation digitale.</p>
+                
+                <p>Notre mission est d'aider les petites entreprises, commerces locaux et startups à développer leur présence en ligne grâce à des solutions créatives et personnalisées. À Dakar, capitale économique du Sénégal, nous comprenons les défis spécifiques des entreprises locales et proposons des solutions adaptées au marché sénégalais.</p>
+                
+                <p>Nous n'aimons pas les solutions toutes faites : chaque projet est pensé sur mesure pour refléter l'identité unique de votre entreprise et atteindre vos objectifs. Que vous soyez une PME établie à Dakar, une startup en croissance ou un commerce local, nous adaptons nos services à vos besoins spécifiques.</p>
+                
+                <p>Notre expertise couvre tous les aspects du digital : création de sites web professionnels, optimisation SEO pour améliorer votre visibilité sur Google, design de logos et identité visuelle, ainsi que l'intégration de solutions d'intelligence artificielle pour automatiser vos processus métier.</p>
+                
+                <p>Basés à Dakar, nous servons des clients dans tout le Sénégal et l'Afrique de l'Ouest. Notre proximité géographique nous permet de comprendre parfaitement les enjeux locaux et de proposer des solutions digitales qui correspondent aux attentes de votre marché.</p>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Sur-Mesure</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Étudiants Passionnés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Créativité</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">🇸🇳</div>
+                    <div class="stat-label">Dakar, Sénégal</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Prêt à Démarrer ?</h2>
+            <p>Pour booster votre visibilité et concrétiser vos projets digitaux, nous vous proposons un <strong>audit gratuit</strong> de votre site actuel ou simplement d'échanger avec vous sans aucun engagement de votre part.</p>
+            <p>Contactez-nous pour en savoir plus et démarrer ensemble cette aventure !</p>
+            <div class="contact-buttons">
+                <a href="contact.html" class="contact-btn primary-btn">📧 Nous Contacter</a>
+                <a href="tel:+221 76 494 59 85" class="contact-btn secondary-btn">📞 +221 76 494 59 85</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">a<span class="k">K</span>oa</div>
+        <p><strong>Akoa - Agence Digitale</strong></p>
+        <p>📍 Dakar, Sénégal</p>
+        <p>📞 <a href="tel:+221764945985">+221 76 494 59 85</a></p>
+        <p>✉️ <a href="mailto:akoa211d@gmail.com">akoa211d@gmail.com</a></p>
+        <p>🕐 Lun-Ven : 9h-18h | Sam : 9h-13h</p>
+        <p>© 2025 Akoa - Agence Web & Digitale à Dakar, Sénégal</p>
+        <p style="margin-top: 1rem;">L'équipe Akoa vous accompagne dans votre transformation digitale</p>
+    </footer>
+
+    <!-- Bouton WhatsApp flottant -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/221764945985?text=Bonjour%20Akoa%20Digital,%20je%20souhaite%20discuter%20de%20mon%20projet%20web" target="_blank" class="whatsapp-btn" title="Contactez-nous sur WhatsApp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+            <span class="whatsapp-text">WhatsApp</span>
+        </a>
+    </div>
+
+    <script>
+        // Loading Screen Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                const body = document.body;
+                
+                // Fade out loading screen
+                loadingScreen.classList.add('fade-out');
+                
+                // Show main content
+                body.classList.remove('loading');
+                body.classList.add('loaded');
+                
+                // Remove loading screen from DOM after transition
+                setTimeout(function() {
+                    loadingScreen.remove();
+                }, 800);
+            }, 2500); // Show loading screen for 2.5 seconds
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        if (mobileMenuToggle && mobileNav && mobileNavClose) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenuToggle.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            mobileNavClose.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        }
+    </script>
+    
+    <!-- Schema.org LocalBusiness pour le SEO local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Akoa",
+      "description": "Agence digitale à Dakar - Sites web, SEO, design",
+      "url": "https://akooa.netlify.app",
+      "telephone": "+221-76-494-59-85",
+      "email": "akoa211d@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dakar",
+        "addressCountry": "SN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "14.7167",
+        "longitude": "-17.4677"
+      },
+      "priceRange": "$$",
+      "areaServed": "Sénégal",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services Digitaux",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Création de Sites Web",
+              "description": "Sites web modernes et responsives pour entreprises à Dakar"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Référencement SEO",
+              "description": "Optimisation pour les moteurs de recherche au Sénégal"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Design de Logos",
+              "description": "Conception de logos personnalisés pour entreprises"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</body>
+</html>
