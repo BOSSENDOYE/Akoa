@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Contact - Akoa Digital</title>
+    <title>Contact Akoa - Devis Gratuit Site Web Dakar</title>
+    <meta name="description" content="Contactez Akoa pour votre projet digital à Dakar. Audit gratuit, devis personnalisé. Création sites web, SEO, design logo. Réponse sous 24h.">
+    <meta name="keywords" content="contact Akoa Dakar, devis site web Sénégal, agence digitale Dakar, audit gratuit web, contact développeur Dakar">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
@@ -193,6 +195,22 @@
             color: #fff;
             font-size: 1rem;
             transition: all 0.3s ease;
+        }
+
+        .form-group select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6,9 12,15 18,9"%3e%3c/polyline%3e%3c/svg%3e');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            padding-right: 3rem;
+        }
+
+        .form-group select option {
+            background: #1a1a2e;
+            color: #fff;
         }
 
         .form-group input:focus,
@@ -906,7 +924,7 @@
                         <div class="contact-icon">📧</div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p><a href="mailto:akoa211d@gmail.com">akoa211d@gmail.com</a></p>
+                            <p><a href="mailto:akoadigital@gmail.com">akoadigital@gmail.com</a></p>
                         </div>
                     </div>
 
@@ -1022,7 +1040,7 @@
     <footer>
         <div class="footer-logo">a<span class="k">K</span>oa</div>
         <p>© 2025 Akoa - Start-up Digitale à Dakar, Sénégal</p>
-        <p>📧 akoa211d@gmail.com | 📞 +221 76 494 59 85</p>
+        <p>📧 akoadigital@gmail.com| 📞 +221 76 494 59 85</p>
     </footer>
 
     <!-- Modal de Confirmation -->
@@ -1050,7 +1068,7 @@
     <script>
         // Initialiser EmailJS
         (function() {
-            emailjs.init("oUFK3_q8LRhygsCN8"); // Clé publique EmailJS Akoa Digital
+            emailjs.init("KOB5BhUNJxEYW-Q6W"); // Clé publique EmailJS Akoa Digital
         })();
 
         // Fonction pour afficher le modal de confirmation
@@ -1105,7 +1123,7 @@
             };
             
             // Envoyer l'email via EmailJS
-            emailjs.send('service_qpvo3l9', 'template_4tzt9mb', formData)
+            emailjs.send('service_8c2m8vd', 'template_ulpre48', formData)
                 .then(function(response) {
                     // Succès - Afficher le modal de confirmation
                     submitBtn.textContent = 'Message envoyé !';

@@ -17,7 +17,7 @@
 1. Dans le dashboard, allez dans "Email Services"
 2. Cliquez "Add New Service"
 3. Choisissez votre fournisseur email :
-   - **Gmail** (recommandé pour `akoa211d@gmail.com`)
+   - **Gmail** (recommandé pour `akoadigital@gmail.com`)
    - **Outlook** 
    - **Yahoo**
 4. Suivez les instructions de connexion
@@ -26,25 +26,29 @@
 #### 3. Créer un template d'email :
 1. Allez dans "Email Templates"
 2. Cliquez "Create New Template"
-3. Utilisez ce template :
+3. Utilisez ce template amélioré pour mieux comprendre les besoins du client :
 
 ```
-Sujet : Nouveau message de contact - Akoa Digital
+Sujet : 🎯 Nouveau projet - {{service}} | {{name}} | Budget: {{budget}}
 
-Bonjour,
+🔔 NOUVEAU LEAD - Akoa Digital
 
-Vous avez reçu un nouveau message de contact depuis votre site web :
+👤 INFORMATIONS CLIENT :
+• Nom : {{name}}
+• Email : {{email}}
+• Téléphone : {{phone}}
+• Entreprise : {{company}}
 
-Nom : {{name}}
-Email : {{email}}
-Téléphone : {{phone}}
-Entreprise : {{company}}
-Service : {{service}}
-Budget : {{budget}}
+🎯 DEMANDE DU CLIENT :
+• Service souhaité : {{service}}
+• Budget estimé : {{budget}}
 
-Message :
+📝 DESCRIPTION DU PROJET :
 {{message}}
 
+---
+💡 Ce client recherche un service {{service}} avec un budget {{budget}}.
+📧 Répondez rapidement à {{email}} pour convertir ce lead !
 ---
 Message envoyé depuis akooa.netlify.app
 ```
@@ -79,7 +83,7 @@ emailjs.send('service_abc123', 'template_xyz789', formData)
 1. Configurez EmailJS avec vos clés
 2. Remplissez le formulaire de contact
 3. Cliquez sur "Envoyer le Message"
-4. Vérifiez que l'email arrive dans `akoa211d@gmail.com`
+4. Vérifiez que l'email arrive dans `akoadigital@gmail.com`
 
 ### Alternative rapide (sans configuration) :
 Si vous voulez tester immédiatement, vous pouvez utiliser :
