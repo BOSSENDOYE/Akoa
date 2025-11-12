@@ -1,0 +1,103 @@
+[build]
+  publish = "."
+  command = "echo 'No build step required for static site'"
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.emailjs.com https://cdn.emailjs.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.emailjs.com;"
+
+# Optimisation mobile
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Vary = "Accept-Encoding"
+
+# Redirections pour le SEO
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/accueil"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/services-web"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio-web"
+  to = "/portfolio.html"
+  status = 301

@@ -1,0 +1,15 @@
+# Redirections Netlify pour Akoa Digital
+
+# Redirections principales
+/index.html  /  301
+/home        /  301
+/accueil     /  301
+
+# Redirections vers pages
+/contact-us     /contact.html     301
+/about-us       /about.html       301
+/services-web   /services.html    301
+/portfolio-web  /portfolio.html   301
+
+# Redirections SEO
+/*  /index.html  200

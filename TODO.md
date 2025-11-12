@@ -19,3 +19,9 @@
 - [ ] Test sur Android Chrome
 - [ ] Test sur connexions lentes
 - [ ] Test avec JavaScript désactivé
+
+## Configuration déploiement
+- [x] Créer netlify.toml avec optimisations
+- [x] Créer _redirects pour Netlify
+- [x] Configurer headers de cache et sécurité
+- [x] Ajouter redirections SEO
