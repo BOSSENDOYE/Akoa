@@ -1074,18 +1074,43 @@
             document.body.style.overflow = 'auto';
         }
 
-        // initialisation EmailJS avec la nouvelle clé publique
-        try {
-            if (window.emailjs && typeof emailjs.init === 'function') {
-                emailjs.init("8eTuuuixBNlAQuUEh");
-            } else {
-                console.warn('EmailJS library non chargée.');
-            }
-        } catch (err) {
-            console.error('EmailJS init failed:', err);
+        // Fonction pour initialiser EmailJS avec retry
+        function initEmailJS(retries = 5, delay = 500) {
+            return new Promise((resolve, reject) => {
+                function tryInit(attempt) {
+                    if (window.emailjs && typeof window.emailjs.init === 'function') {
+                        try {
+                            window.emailjs.init("8eTuuuixBNlAQuUEh");
+                            console.log('EmailJS initialisé avec succès');
+                            resolve(true);
+                        } catch (err) {
+                            console.error('Erreur lors de l\'initialisation EmailJS:', err);
+                            if (attempt < retries) {
+                                setTimeout(() => tryInit(attempt + 1), delay);
+                            } else {
+                                reject(err);
+                            }
+                        }
+                    } else {
+                        if (attempt < retries) {
+                            console.log(`Tentative ${attempt + 1}/${retries}: EmailJS en cours de chargement...`);
+                            setTimeout(() => tryInit(attempt + 1), delay);
+                        } else {
+                            const error = new Error('EmailJS library non chargée après plusieurs tentatives');
+                            console.error(error);
+                            reject(error);
+                        }
+                    }
+                }
+                tryInit(0);
+            });
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            // Initialiser EmailJS une fois le DOM chargé
+            initEmailJS().catch(err => {
+                console.warn('EmailJS ne pourra pas être utilisé:', err);
+            });
             const confirmationModal = document.getElementById('confirmationModal');
             const confirmationBtn = document.getElementById('confirmationBtn');
             const contactForm = document.getElementById('contactForm');
@@ -1152,15 +1177,29 @@
                         message: formData.message
                     };
 
-                    if (!window.emailjs || typeof emailjs.send !== 'function') {
-                        alert('EmailJS non disponible. Réessayez plus tard.');
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = originalText;
-                        submitBtn.style.background = '';
-                        return;
+                    // Vérifier et initialiser EmailJS si nécessaire
+                    function sendEmail() {
+                        if (!window.emailjs || typeof window.emailjs.send !== 'function') {
+                            // Réessayer l'initialisation une dernière fois
+                            initEmailJS(3, 300).then(() => {
+                                if (window.emailjs && typeof window.emailjs.send === 'function') {
+                                    performSend();
+                                } else {
+                                    throw new Error('EmailJS non disponible');
+                                }
+                            }).catch(() => {
+                                alert('EmailJS non disponible. Vérifiez votre connexion internet et réessayez plus tard.');
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = originalText;
+                                submitBtn.style.background = '';
+                            });
+                            return;
+                        }
+                        performSend();
                     }
 
-                    emailjs.send('service_fta3lho', 'template_c09u0yx', templateParams)
+                    function performSend() {
+                        window.emailjs.send('service_fta3lho', 'template_c09u0yx', templateParams)
                         .then(function (response) {
                             submitBtn.textContent = 'Message envoyé !';
                             submitBtn.style.background = '#25D366';
@@ -1188,6 +1227,9 @@
                                 submitBtn.style.background = '';
                             }, 3000);
                         });
+                    }
+
+                    sendEmail();
                 });
             }
 
