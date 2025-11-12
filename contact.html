@@ -1051,7 +1051,7 @@
             <p class="confirmation-message">
                 Merci pour votre message ! Nous avons bien reçu votre demande et nous vous répondrons dans les plus brefs délais.
             </p>
-            <button class="confirmation-btn" onclick="closeConfirmationModal()">Parfait !</button>
+            <button class="confirmation-btn" id="confirmationBtn">Parfait !</button>
         </div>
     </div>
 
@@ -1066,10 +1066,18 @@
     </div>
 
     <script>
-        // initialisation EmailJS en toute sécurité
+        // Déclaration globale pour que closeConfirmationModal soit accessible partout
+        function closeConfirmationModal() {
+            const confirmationModal = document.getElementById('confirmationModal');
+            if (!confirmationModal) return;
+            confirmationModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // initialisation EmailJS avec la nouvelle clé publique
         try {
             if (window.emailjs && typeof emailjs.init === 'function') {
-                emailjs.init("KOB5BhUNJxEYW-Q6W");
+                emailjs.init("8eTuuuixBNlAQuUEh");
             } else {
                 console.warn('EmailJS library non chargée.');
             }
@@ -1078,40 +1086,41 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            // éléments
             const confirmationModal = document.getElementById('confirmationModal');
+            const confirmationBtn = document.getElementById('confirmationBtn');
             const contactForm = document.getElementById('contactForm');
             const submitBtn = document.querySelector('.submit-btn');
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileNav = document.getElementById('mobileNav');
             const mobileNavClose = document.getElementById('mobileNavClose');
 
-            // s'assurer que le bouton fermer mobile a un symbole propre
             if (mobileNavClose) mobileNavClose.innerHTML = '&times;';
 
-            // modal helpers
             function showConfirmationModal() {
                 if (!confirmationModal) return;
                 confirmationModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
-            function closeConfirmationModal() {
-                if (!confirmationModal) return;
-                confirmationModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
+
+            // Événement sur le bouton "Parfait !"
+            if (confirmationBtn) {
+                confirmationBtn.addEventListener('click', function () {
+                    closeConfirmationModal();
+                });
             }
 
-            // interactions modal
+            // Fermer en cliquant en dehors du modal
             if (confirmationModal) {
                 confirmationModal.addEventListener('click', function (e) {
                     if (e.target === this) closeConfirmationModal();
                 });
             }
+
+            // Fermer avec Échap
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') closeConfirmationModal();
             });
 
-            // formulaire
             if (contactForm && submitBtn) {
                 contactForm.addEventListener('submit', function (e) {
                     e.preventDefault();
@@ -1131,16 +1140,27 @@
                         message: document.getElementById('message')?.value || ''
                     };
 
+                    const templateParams = {
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        reply_to: formData.email,
+                        to_email: 'akoadigital@gmail.com',
+                        phone: formData.phone,
+                        company: formData.company,
+                        service: formData.service,
+                        budget: formData.budget,
+                        message: formData.message
+                    };
+
                     if (!window.emailjs || typeof emailjs.send !== 'function') {
-                        console.error('EmailJS non disponible.');
-                        alert('Impossible d\'envoyer le message pour le moment. Veuillez réessayer plus tard.');
+                        alert('EmailJS non disponible. Réessayez plus tard.');
                         submitBtn.disabled = false;
                         submitBtn.textContent = originalText;
                         submitBtn.style.background = '';
                         return;
                     }
 
-                    emailjs.send('service_8c2m8vd', 'template_ulpre48', formData)
+                    emailjs.send('service_fta3lho', 'template_c09u0yx', templateParams)
                         .then(function (response) {
                             submitBtn.textContent = 'Message envoyé !';
                             submitBtn.style.background = '#25D366';
@@ -1157,18 +1177,10 @@
                             submitBtn.textContent = 'Erreur - Réessayer';
                             submitBtn.style.background = '#e74c3c';
 
-                            let errorMessage = 'Erreur lors de l\'envoi du message.\n\n';
-                            if (error && error.status === 400) {
-                                errorMessage += 'Erreur 400: Vérifiez vos clés EmailJS dans le dashboard.';
-                            } else if (error && error.status === 401) {
-                                errorMessage += 'Erreur 401: Clé publique invalide.';
-                            } else if (error && error.status === 404) {
-                                errorMessage += 'Erreur 404: Service ou template introuvable.';
-                            } else {
-                                errorMessage += `Erreur ${error?.status || 'inconnue'}: ${error?.text || ''}`;
-                            }
-                            errorMessage += '\n\nVeuillez réessayer ou nous contacter directement.';
-                            alert(errorMessage);
+                            let msg = 'Erreur lors de l\'envoi du message.\n\n';
+                            msg += `Status: ${error?.status || 'inconnu'}\n${error?.text || ''}\n\n`;
+                            msg += 'Vérifiez : service ID, template ID, variables du template et clé publique.';
+                            alert(msg);
 
                             setTimeout(function () {
                                 submitBtn.disabled = false;
@@ -1221,7 +1233,7 @@
                 });
             });
 
-            // Smooth scrolling (anchors internes)
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
