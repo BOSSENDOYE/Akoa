@@ -6,7 +6,71 @@
     <title>Contact Akoa - Devis Gratuit Site Web Dakar</title>
     <meta name="description" content="Contactez Akoa pour votre projet digital à Dakar. Audit gratuit, devis personnalisé. Création sites web, SEO, design logo. Réponse sous 24h.">
     <meta name="keywords" content="contact Akoa Dakar, devis site web Sénégal, agence digitale Dakar, audit gratuit web, contact développeur Dakar">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Chargement EmailJS avec fallback -->
+    <script>
+        // Fonction pour charger EmailJS dynamiquement avec fallback
+        function loadEmailJS() {
+            return new Promise((resolve, reject) => {
+                // Essayer d'abord jsdelivr
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+                script.async = true;
+                
+                script.onload = function() {
+                    console.log('✅ EmailJS chargé depuis jsdelivr.net');
+                    // Vérifier que emailjs est bien disponible
+                    setTimeout(() => {
+                        if (window.emailjs) {
+                            console.log('✅ window.emailjs disponible:', typeof window.emailjs);
+                            console.log('✅ Méthodes disponibles:', Object.keys(window.emailjs));
+                        } else {
+                            console.warn('⚠️ window.emailjs non disponible après chargement');
+                        }
+                    }, 100);
+                    resolve();
+                };
+                
+                script.onerror = function() {
+                    console.warn('⚠️ jsdelivr.net échoué, tentative avec unpkg.com...');
+                    // Fallback vers unpkg.com
+                    const fallbackScript = document.createElement('script');
+                    fallbackScript.type = 'text/javascript';
+                    fallbackScript.src = 'https://unpkg.com/@emailjs/browser@3/dist/email.min.js';
+                    fallbackScript.async = true;
+                
+                    fallbackScript.onload = function() {
+                        console.log('✅ EmailJS chargé depuis unpkg.com');
+                        setTimeout(() => {
+                            if (window.emailjs) {
+                                console.log('✅ window.emailjs disponible:', typeof window.emailjs);
+                            }
+                        }, 100);
+                        resolve();
+                    };
+                    
+                    fallbackScript.onerror = function() {
+                        console.error('❌ Impossible de charger EmailJS depuis les CDN');
+                        console.error('Vérifiez la console du navigateur pour les erreurs CSP ou réseau');
+                        // Ne pas rejeter immédiatement, laisser la fonction initEmailJS gérer
+                        console.warn('EmailJS sera chargé de manière asynchrone lors de l\'initialisation');
+                        resolve(); // Résoudre quand même pour permettre les tentatives ultérieures
+                    };
+                    
+                    document.head.appendChild(fallbackScript);
+                };
+                
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Charger EmailJS dès que possible
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadEmailJS);
+        } else {
+            loadEmailJS();
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -1066,6 +1130,40 @@
     </div>
 
     <script>
+        // ============================================
+        // CONFIGURATION EMAILJS - À METTRE À JOUR ICI
+        // ============================================
+        const EMAILJS_CONFIG = {
+            publicKey: "KOB5BhUNJxEYW-Q6W",           // Clé publique EmailJS (Account → General)
+            serviceID: "service_8c2m8vd",              // ID du service EmailJS (Email Services)
+            templateID: "template_ulpre48",             // ID du template EmailJS (Email Templates)
+            recipientEmail: "akoadigital@gmail.com"     // Email de réception
+        };
+        
+        // Validation de la configuration au démarrage
+        (function validateEmailJSConfig() {
+            const required = ['publicKey', 'serviceID', 'templateID', 'recipientEmail'];
+            const missing = required.filter(key => !EMAILJS_CONFIG[key] || EMAILJS_CONFIG[key].trim() === '');
+            if (missing.length > 0) {
+                console.error('❌ Configuration EmailJS incomplète. Champs manquants:', missing.join(', '));
+            } else {
+                console.log('✅ Configuration EmailJS validée:', {
+                    serviceID: EMAILJS_CONFIG.serviceID,
+                    templateID: EMAILJS_CONFIG.templateID,
+                    recipientEmail: EMAILJS_CONFIG.recipientEmail
+                });
+            }
+            
+            // Diagnostic de l'environnement
+            console.log('🌐 Environnement:', {
+                hostname: window.location.hostname,
+                protocol: window.location.protocol,
+                isLocal: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1',
+                isProduction: !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')
+            });
+        })();
+        // ============================================
+
         // Déclaration globale pour que closeConfirmationModal soit accessible partout
         function closeConfirmationModal() {
             const confirmationModal = document.getElementById('confirmationModal');
@@ -1074,42 +1172,121 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Fonction pour initialiser EmailJS avec retry
-        function initEmailJS(retries = 5, delay = 500) {
-            return new Promise((resolve, reject) => {
+        // Variable globale pour suivre l'état d'initialisation
+        let emailJSInitialized = false;
+        let emailJSInitPromise = null;
+
+        // Fonction pour initialiser EmailJS avec retry amélioré
+        function initEmailJS(retries = 15, delay = 400) {
+            // Si déjà initialisé, retourner une promesse résolue
+            if (emailJSInitialized && window.emailjs && typeof window.emailjs.send === 'function') {
+                console.log('✅ EmailJS déjà initialisé');
+                return Promise.resolve(true);
+            }
+
+            // Si une initialisation est en cours, retourner cette promesse
+            if (emailJSInitPromise) {
+                console.log('⏳ Initialisation EmailJS déjà en cours...');
+                return emailJSInitPromise;
+            }
+
+            console.log('🔄 Début de l\'initialisation EmailJS...');
+            emailJSInitPromise = new Promise((resolve, reject) => {
                 function tryInit(attempt) {
-                    if (window.emailjs && typeof window.emailjs.init === 'function') {
-                        try {
-                            window.emailjs.init("8eTuuuixBNlAQuUEh");
-                            console.log('EmailJS initialisé avec succès');
-                            resolve(true);
-                        } catch (err) {
-                            console.error('Erreur lors de l\'initialisation EmailJS:', err);
-                            if (attempt < retries) {
-                                setTimeout(() => tryInit(attempt + 1), delay);
-                            } else {
-                                reject(err);
+                    // Diagnostic détaillé
+                    const diagnostics = {
+                        windowEmailjs: !!window.emailjs,
+                        emailjsType: typeof window.emailjs,
+                        hasInit: window.emailjs && typeof window.emailjs.init === 'function',
+                        hasSend: window.emailjs && typeof window.emailjs.send === 'function',
+                        attempt: attempt + 1
+                    };
+                    
+                    if (attempt % 5 === 0) {
+                        console.log(`🔍 Diagnostic EmailJS (tentative ${attempt + 1}/${retries}):`, diagnostics);
+                    }
+
+                    // Vérifier si la bibliothèque est chargée
+                    if (window.emailjs) {
+                        // Vérifier si init existe
+                        if (typeof window.emailjs.init === 'function') {
+                            try {
+                                window.emailjs.init(EMAILJS_CONFIG.publicKey);
+                                emailJSInitialized = true;
+                                console.log('✅ EmailJS initialisé avec succès');
+                                console.log('✅ Clé publique utilisée:', EMAILJS_CONFIG.publicKey.substring(0, 10) + '...');
+                                emailJSInitPromise = null;
+                                resolve(true);
+                                return;
+                            } catch (err) {
+                                console.error('❌ Erreur lors de l\'initialisation EmailJS:', err);
+                                console.error('Détails:', {
+                                    error: err.message,
+                                    stack: err.stack,
+                                    publicKey: EMAILJS_CONFIG.publicKey ? 'Définie' : 'Manquante'
+                                });
+                                if (attempt < retries) {
+                                    setTimeout(() => tryInit(attempt + 1), delay);
+                                } else {
+                                    emailJSInitPromise = null;
+                                    reject(err);
+                                }
+                                return;
                             }
+                        } else {
+                            console.warn(`⚠️ window.emailjs existe mais init() n'est pas disponible (tentative ${attempt + 1})`);
                         }
                     } else {
-                        if (attempt < retries) {
-                            console.log(`Tentative ${attempt + 1}/${retries}: EmailJS en cours de chargement...`);
-                            setTimeout(() => tryInit(attempt + 1), delay);
-                        } else {
-                            const error = new Error('EmailJS library non chargée après plusieurs tentatives');
-                            console.error(error);
-                            reject(error);
+                        if (attempt === 0) {
+                            console.warn('⚠️ window.emailjs non disponible. Vérification du chargement du script...');
                         }
+                    }
+
+                    // Si la bibliothèque n'est pas encore chargée
+                    if (attempt < retries) {
+                        if (attempt % 3 === 0) {
+                            console.log(`⏳ Tentative ${attempt + 1}/${retries}: EmailJS en cours de chargement...`);
+                        }
+                        setTimeout(() => tryInit(attempt + 1), delay);
+                    } else {
+                        const error = new Error('EmailJS library non chargée après plusieurs tentatives. Vérifiez votre connexion internet et la configuration CSP.');
+                        console.error('❌ Échec final:', error);
+                        console.error('🔍 État final:', {
+                            windowEmailjs: !!window.emailjs,
+                            emailjsType: typeof window.emailjs,
+                            scripts: Array.from(document.scripts).map(s => s.src).filter(s => s.includes('emailjs') || s.includes('email'))
+                        });
+                        emailJSInitPromise = null;
+                        reject(error);
                     }
                 }
                 tryInit(0);
             });
+
+            return emailJSInitPromise;
         }
 
+        // Détecter les erreurs CSP
+        window.addEventListener('error', function(e) {
+            if (e.message && (e.message.includes('Content Security Policy') || e.message.includes('CSP'))) {
+                console.error('❌ ERREUR CSP DÉTECTÉE:', e.message);
+                console.error('Vérifiez la configuration CSP dans netlify.toml');
+            }
+        }, true);
+
         document.addEventListener('DOMContentLoaded', function () {
+            console.log('📄 DOM chargé, initialisation EmailJS...');
+            console.log('🔍 Vérification des scripts chargés:', 
+                Array.from(document.scripts).map(s => ({ src: s.src, async: s.async, defer: s.defer }))
+            );
+            
             // Initialiser EmailJS une fois le DOM chargé
             initEmailJS().catch(err => {
-                console.warn('EmailJS ne pourra pas être utilisé:', err);
+                console.warn('⚠️ EmailJS ne pourra pas être utilisé:', err);
+                console.warn('💡 Vérifiez:');
+                console.warn('  1. Que le script EmailJS est bien chargé');
+                console.warn('  2. Qu\'il n\'y a pas d\'erreurs CSP dans la console');
+                console.warn('  3. Que la connexion internet fonctionne');
             });
             const confirmationModal = document.getElementById('confirmationModal');
             const confirmationBtn = document.getElementById('confirmationBtn');
@@ -1155,51 +1332,103 @@
                     submitBtn.textContent = 'Envoi en cours...';
                     submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
 
+                    // Récupération des données du formulaire avec vérification
+                    const nameInput = document.getElementById('name');
+                    const emailInput = document.getElementById('email');
+                    const phoneInput = document.getElementById('phone');
+                    const companyInput = document.getElementById('company');
+                    const serviceInput = document.getElementById('service');
+                    const budgetInput = document.getElementById('budget');
+                    const messageInput = document.getElementById('message');
+
                     const formData = {
-                        name: document.getElementById('name')?.value || '',
-                        email: document.getElementById('email')?.value || '',
-                        phone: document.getElementById('phone')?.value || '',
-                        company: document.getElementById('company')?.value || '',
-                        service: document.getElementById('service')?.value || '',
-                        budget: document.getElementById('budget')?.value || '',
-                        message: document.getElementById('message')?.value || ''
+                        name: nameInput ? (nameInput.value || '').trim() : '',
+                        email: emailInput ? (emailInput.value || '').trim() : '',
+                        phone: phoneInput ? (phoneInput.value || '').trim() : '',
+                        company: companyInput ? (companyInput.value || '').trim() : '',
+                        service: serviceInput ? (serviceInput.value || '').trim() : '',
+                        budget: budgetInput ? (budgetInput.value || '').trim() : '',
+                        message: messageInput ? (messageInput.value || '').trim() : ''
                     };
+
+                    // Log des données récupérées pour débogage
+                    console.log('📝 Données du formulaire récupérées:', formData);
+
+                    // Validation des champs requis
+                    if (!formData.name || !formData.email || !formData.message) {
+                        alert('Veuillez remplir tous les champs obligatoires (Nom, Email, Message)');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        return;
+                    }
 
                     const templateParams = {
                         from_name: formData.name,
                         from_email: formData.email,
                         reply_to: formData.email,
-                        to_email: 'akoadigital@gmail.com',
-                        phone: formData.phone,
-                        company: formData.company,
-                        service: formData.service,
-                        budget: formData.budget,
-                        message: formData.message
+                        to_email: EMAILJS_CONFIG.recipientEmail,
+                        phone: formData.phone || 'Non renseigné',
+                        company: formData.company || 'Non renseigné',
+                        service: formData.service || 'Non spécifié',
+                        budget: formData.budget || 'Non spécifié',
+                        message: formData.message,
+                        // Ajout de variables supplémentaires pour le template
+                        name: formData.name,  // Variable 'name' en plus de 'from_name'
+                        email: formData.email  // Variable 'email' en plus de 'from_email'
                     };
+
+                    // Log des paramètres qui seront envoyés
+                    console.log('📤 Paramètres EmailJS à envoyer:', templateParams);
 
                     // Vérifier et initialiser EmailJS si nécessaire
                     function sendEmail() {
-                        if (!window.emailjs || typeof window.emailjs.send !== 'function') {
-                            // Réessayer l'initialisation une dernière fois
-                            initEmailJS(3, 300).then(() => {
-                                if (window.emailjs && typeof window.emailjs.send === 'function') {
-                                    performSend();
-                                } else {
-                                    throw new Error('EmailJS non disponible');
-                                }
-                            }).catch(() => {
-                                alert('EmailJS non disponible. Vérifiez votre connexion internet et réessayez plus tard.');
-                                submitBtn.disabled = false;
-                                submitBtn.textContent = originalText;
-                                submitBtn.style.background = '';
+                        console.log('📧 Tentative d\'envoi d\'email...');
+                        console.log('📋 Configuration EmailJS:', {
+                            serviceID: EMAILJS_CONFIG.serviceID,
+                            templateID: EMAILJS_CONFIG.templateID
+                        });
+                        console.log('📋 Toutes les variables envoyées:', templateParams);
+                        
+                        // Toujours réessayer l'initialisation avant d'envoyer
+                        initEmailJS(12, 500).then(() => {
+                            console.log('✅ EmailJS initialisé, vérification de send()...');
+                            if (window.emailjs && typeof window.emailjs.send === 'function') {
+                                console.log('✅ Fonction send() disponible, envoi en cours...');
+                                performSend();
+                            } else {
+                                console.error('❌ send() non disponible:', {
+                                    emailjs: !!window.emailjs,
+                                    sendType: window.emailjs ? typeof window.emailjs.send : 'N/A'
+                                });
+                                throw new Error('EmailJS send function non disponible');
+                            }
+                        }).catch((error) => {
+                            console.error('❌ Erreur EmailJS complète:', error);
+                            console.error('🔍 État actuel:', {
+                                windowEmailjs: !!window.emailjs,
+                                emailjsType: typeof window.emailjs,
+                                initialized: emailJSInitialized,
+                                scripts: Array.from(document.scripts).map(s => s.src)
                             });
-                            return;
-                        }
-                        performSend();
+                            
+                            let errorMsg = 'EmailJS non disponible.\n\n';
+                            errorMsg += 'Causes possibles :\n';
+                            errorMsg += '• Problème de connexion internet\n';
+                            errorMsg += '• Blocage par le navigateur (CSP)\n';
+                            errorMsg += '• CDN jsdelivr.net inaccessible\n';
+                            errorMsg += '• Script EmailJS non chargé\n\n';
+                            errorMsg += 'Ouvrez la console (F12) pour plus de détails.\n';
+                            errorMsg += 'Vérifiez les erreurs réseau et CSP.';
+                            alert(errorMsg);
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.background = '';
+                        });
                     }
 
                     function performSend() {
-                        window.emailjs.send('service_fta3lho', 'template_c09u0yx', templateParams)
+                        window.emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, templateParams)
                         .then(function (response) {
                             submitBtn.textContent = 'Message envoyé !';
                             submitBtn.style.background = '#25D366';
@@ -1212,13 +1441,26 @@
                             }, 3000);
                         })
                         .catch(function (error) {
-                            console.error('Erreur EmailJS:', error);
+                            console.error('❌ Erreur EmailJS:', error);
+                            console.error('Configuration utilisée:', {
+                                serviceID: EMAILJS_CONFIG.serviceID,
+                                templateID: EMAILJS_CONFIG.templateID,
+                                publicKey: EMAILJS_CONFIG.publicKey ? '✅ Définie' : '❌ Manquante'
+                            });
                             submitBtn.textContent = 'Erreur - Réessayer';
                             submitBtn.style.background = '#e74c3c';
 
                             let msg = 'Erreur lors de l\'envoi du message.\n\n';
-                            msg += `Status: ${error?.status || 'inconnu'}\n${error?.text || ''}\n\n`;
-                            msg += 'Vérifiez : service ID, template ID, variables du template et clé publique.';
+                            msg += `Status: ${error?.status || 'inconnu'}\n`;
+                            msg += `Message: ${error?.text || error?.message || 'Erreur inconnue'}\n\n`;
+                            msg += 'Configuration actuelle :\n';
+                            msg += `• Service ID: ${EMAILJS_CONFIG.serviceID}\n`;
+                            msg += `• Template ID: ${EMAILJS_CONFIG.templateID}\n\n`;
+                            msg += 'Vérifiez dans EmailJS :\n';
+                            msg += '• Service ID correct\n';
+                            msg += '• Template ID correct\n';
+                            msg += '• Variables du template correspondent\n';
+                            msg += '• Clé publique valide';
                             alert(msg);
 
                             setTimeout(function () {
