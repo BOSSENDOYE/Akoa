@@ -8,6 +8,16 @@
     <meta name="keywords" content="contact Akoa Dakar, devis site web Sénégal, agence digitale Dakar, audit gratuit web, contact développeur Dakar">
     <!-- Chargement EmailJS avec fallback -->
     <script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Akoa - Devis Gratuit Site Web Dakar</title>
+    <meta name="description" content="Contactez Akoa pour votre projet digital à Dakar. Audit gratuit, devis personnalisé. Création sites web, SEO, design logo. Réponse sous 24h.">
+    <meta name="keywords" content="contact Akoa Dakar, devis site web Sénégal, agence digitale Dakar, audit gratuit web, contact développeur Dakar">
+    <!-- Chargement EmailJS avec fallback -->
+    <script>
         // Fonction pour charger EmailJS dynamiquement avec fallback
         function loadEmailJS() {
             return new Promise((resolve, reject) => {
@@ -81,8 +91,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            background: #0a0a0a;
-            color: #fff;
+            background: #FFF1F1;
+            color: #3B0270;
         }
 
         /* Header & Navigation */
@@ -91,10 +101,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(255, 241, 241, 0.95);
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(233, 179, 251, 0.3);
         }
 
         nav {
@@ -109,16 +119,16 @@
             font-size: 2.5rem;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #fff;
+            color: #3B0270;
             position: relative;
-            filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.5));
+            filter: drop-shadow(0 4px 12px rgba(111, 0, 255, 0.5));
             text-decoration: none;
         }
 
         .logo .k {
             font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -134,7 +144,7 @@
         }
 
         .nav-links a {
-            color: #fff;
+            color: #3B0270;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -143,7 +153,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #667eea;
+            color: #6F00FF;
         }
 
         .nav-links a::after {
@@ -153,7 +163,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             transition: width 0.3s ease;
         }
 
@@ -169,13 +179,360 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%), url('unnamed.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, rgba(255, 241, 241, 0.8) 0%, rgba(233, 179, 251, 0.8) 100%);
             overflow: hidden;
             padding: 0 5%;
+        }
+
+        /* Floating People with Computers */
+        .floating-shape {
+            position: absolute;
+            backdrop-filter: blur(10px);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Person 1 - Sitting at desk */
+        .floating-shape:nth-child(1) {
+            width: 120px;
+            height: 100px;
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+        .floating-shape:nth-child(1)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+        }
+        .floating-shape:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2s ease-in-out infinite alternate;
+        }
+
+        /* Person 2 - Standing with laptop */
+        .floating-shape:nth-child(2) {
+            width: 100px;
+            height: 120px;
+            top: 55%;
+            right: 12%;
+            animation-delay: 2s;
+        }
+        .floating-shape:nth-child(2)::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 25px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 5px;
+            left: 25px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 30px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 3px;
+            top: 35px;
+            left: 27px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Person 3 - Coding at computer */
+        .floating-shape:nth-child(3) {
+            width: 140px;
+            height: 110px;
+            top: 35%;
+            left: 75%;
+            animation-delay: 4s;
+        }
+        .floating-shape:nth-child(3)::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 32px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 8px;
+            left: 15px;
+            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+        }
+        .floating-shape:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 35px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        /* Person 4 - Mobile developer */
+        .floating-shape:nth-child(4) {
+            width: 90px;
+            height: 130px;
+            top: 75%;
+            left: 18%;
+            animation-delay: 1s;
+        }
+        .floating-shape:nth-child(4)::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 22px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(4)::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 8px;
+            top: 35px;
+            left: 32px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.8s ease-in-out infinite alternate;
+        }
+
+        /* Person 5 - Designer with tablet */
+        .floating-shape:nth-child(5) {
+            width: 110px;
+            height: 115px;
+            top: 25%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+        .floating-shape:nth-child(5)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 28px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 12px;
+            left: 18px;
+            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+        }
+        .floating-shape:nth-child(5)::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.2s ease-in-out infinite alternate;
+        }
+
+        /* Person 6 - Programmer with dual screens */
+        .floating-shape:nth-child(6) {
+            width: 160px;
+            height: 105px;
+            top: 65%;
+            left: 65%;
+            animation-delay: 5s;
+        }
+        .floating-shape:nth-child(6)::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 35px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 5px;
+            left: 10px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(6)::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 25px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 3px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.3s ease-in-out infinite alternate;
+        }
+
+        /* Person 7 - Data scientist with charts */
+        .floating-shape:nth-child(7) {
+            width: 130px;
+            height: 125px;
+            top: 45%;
+            left: 5%;
+            animation-delay: 6s;
+        }
+        .floating-shape:nth-child(7)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 28px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 25px;
+            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+        }
+        .floating-shape:nth-child(7)::after {
+            content: '';
+            position: absolute;
+            width: 55px;
+            height: 35px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 37px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.8s ease-in-out infinite alternate;
+        }
+
+        /* Person 8 - UX designer with wireframes */
+        .floating-shape:nth-child(8) {
+            width: 115px;
+            height: 135px;
+            top: 70%;
+            right: 3%;
+            animation-delay: 7s;
+        }
+        .floating-shape:nth-child(8)::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 24px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 8px;
+            left: 22px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(8)::after {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 55px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 8px;
+            top: 40px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.9s ease-in-out infinite alternate;
+        }
+
+        /* Person 9 - Game developer */
+        .floating-shape:nth-child(9) {
+            width: 125px;
+            height: 115px;
+            top: 20%;
+            left: 85%;
+            animation-delay: 8s;
+        }
+        .floating-shape:nth-child(9)::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 30px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 12px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+        }
+        .floating-shape:nth-child(9)::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 5px;
+            top: 50px;
+            left: 37px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.3s ease-in-out infinite alternate;
+        }
+
+        /* Person 10 - Cybersecurity expert */
+        .floating-shape:nth-child(10) {
+            width: 140px;
+            height: 120px;
+            top: 50%;
+            right: 20%;
+            animation-delay: 9s;
+        }
+        .floating-shape:nth-child(10)::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 32px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 6px;
+            left: 18px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(10)::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-25px) rotate(5deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-5deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-35px) rotate(3deg) scale(1.02);
+            }
+        }
+
+        @keyframes screenGlow {
+            0% {
+                box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4), 0 0 10px rgba(111, 0, 255, 0.2);
+            }
+            100% {
+                box-shadow: 0 2px 12px rgba(111, 0, 255, 0.6), 0 0 20px rgba(111, 0, 255, 0.4);
+            }
         }
 
         .hero-content {
@@ -188,7 +545,7 @@
             font-size: 4.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 50%, #E9B3FB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -196,14 +553,14 @@
 
         .hero p {
             font-size: 1.5rem;
-            color: #b8b8b8;
+            color: #3B0270;
             margin-bottom: 3rem;
         }
 
         /* Contact Section */
         .contact {
             padding: 8rem 5%;
-            background: #0f0f0f;
+            background: rgba(255, 241, 241, 0.02);
         }
 
         .contact-content {
@@ -216,7 +573,7 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 4rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -231,10 +588,10 @@
 
         /* Contact Form */
         .contact-form {
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(145deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
             padding: 3rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(233, 179, 251, 0.3);
         }
 
         .form-group {
@@ -244,7 +601,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #667eea;
+            color: #6F00FF;
             font-weight: 600;
         }
 
@@ -253,10 +610,10 @@
         .form-group select {
             width: 100%;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 241, 241, 0.05);
+            border: 1px solid rgba(233, 179, 251, 0.3);
             border-radius: 10px;
-            color: #fff;
+            color: #3B0270;
             font-size: 1rem;
             transition: all 0.3s ease;
         }
@@ -281,8 +638,8 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #6F00FF;
+            box-shadow: 0 0 0 3px rgba(111, 0, 255, 0.1);
         }
 
         .form-group textarea {
@@ -298,20 +655,20 @@
         .submit-btn {
             width: 100%;
             padding: 1.2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            color: #FFF1F1;
             border: none;
             border-radius: 10px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(111, 0, 255, 0.4);
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 15px 40px rgba(111, 0, 255, 0.6);
         }
 
         /* Contact Info */
@@ -324,22 +681,22 @@
             align-items: center;
             margin-bottom: 2.5rem;
             padding: 2rem;
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(145deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(233, 179, 251, 0.3);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
+            box-shadow: 0 15px 30px rgba(111, 0, 255, 0.2);
+            border-color: #6F00FF;
         }
 
         .contact-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -352,22 +709,22 @@
         .contact-details h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #667eea;
+            color: #6F00FF;
         }
 
         .contact-details p {
-            color: #b8b8b8;
+            color: #3B0270;
             font-size: 1rem;
         }
 
         .contact-details a {
-            color: #667eea;
+            color: #6F00FF;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            color: #764ba2;
+            color: #E9B3FB;
         }
 
         /* Social Links */
@@ -379,7 +736,7 @@
         .social-links h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: #667eea;
+            color: #6F00FF;
         }
 
         .social-grid {
@@ -391,12 +748,12 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: #FFF1F1;
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
@@ -404,7 +761,7 @@
 
         .social-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 25px rgba(111, 0, 255, 0.4);
         }
 
         .social-link.facebook:hover {
@@ -430,7 +787,7 @@
         /* FAQ Section */
         .faq {
             padding: 8rem 5%;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 100%);
+            background: linear-gradient(135deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
         }
 
         .faq-content {
@@ -440,15 +797,15 @@
 
         .faq-item {
             margin-bottom: 2rem;
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(145deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(233, 179, 251, 0.3);
             overflow: hidden;
         }
 
         .faq-question {
             padding: 1.5rem 2rem;
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(111, 0, 255, 0.1);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -457,16 +814,16 @@
         }
 
         .faq-question:hover {
-            background: rgba(102, 126, 234, 0.2);
+            background: rgba(111, 0, 255, 0.2);
         }
 
         .faq-question h3 {
-            color: #667eea;
+            color: #6F00FF;
             font-size: 1.2rem;
         }
 
         .faq-icon {
-            color: #667eea;
+            color: #6F00FF;
             font-size: 1.5rem;
             transition: transform 0.3s ease;
         }
@@ -484,7 +841,7 @@
         }
 
         .faq-answer p {
-            color: #b8b8b8;
+            color: #3B0270;
             line-height: 1.6;
         }
 
@@ -495,22 +852,22 @@
         /* Footer */
         footer {
             padding: 3rem 5%;
-            background: #000;
+            background: rgba(255, 241, 241, 0.9);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(233, 179, 251, 0.3);
         }
 
         .footer-logo {
             font-size: 2rem;
             margin-bottom: 1rem;
             font-weight: 900;
-            color: #fff;
-            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+            color: #3B0270;
+            filter: drop-shadow(0 0 10px rgba(111, 0, 255, 0.3));
         }
         
         .footer-logo .k {
             font-size: 2.8rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -520,7 +877,7 @@
         }
 
         footer p {
-            color: #666;
+            color: #3B0270;
             font-size: 0.95rem;
         }
 
@@ -771,7 +1128,7 @@
             left: -100%;
             width: 100%;
             height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(255, 241, 241, 0.98);
             backdrop-filter: blur(20px);
             z-index: 9999;
             transition: left 0.3s ease;
@@ -922,6 +1279,16 @@
     </div>
 
     <section class="hero">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
         <div class="hero-content">
             <h1>Contactez-Nous</h1>
             <p>Prêt à transformer votre vision digitale ? Parlons-en !</p>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Services Digitaux Akoa - Création Sites Web & SEO Dakar</title>
-    <meta name="description" content="Services complets de création de sites web, SEO, design de logos et automatisation IA à Dakar. Agence digitale spécialisée PME sénégalaises. Devis gratuit.">
-    <meta name="keywords" content="services web Dakar, création site internet Sénégal, agence digitale Dakar, développement web Afrique, SEO Dakar, design logo Sénégal">
+    <title>Services Akoa - Création Sites Web Dakar | SEO & Design Logo Sénégal</title>
+    <meta name="description" content="Découvrez nos services digitaux : création de sites web, design de logos, SEO, automatisation IA. Agence web Dakar spécialisée dans le développement digital au Sénégal.">
+    <meta name="keywords" content="services agence web Dakar, création site web Sénégal, design logo Dakar, SEO Sénégal, développement web Afrique, automatisation IA Dakar">
     <style>
         * {
             margin: 0;
@@ -16,8 +16,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            background: #0a0a0a;
-            color: #fff;
+            background: #FFF1F1;
+            color: #3B0270;
         }
 
         /* Header & Navigation */
@@ -26,10 +26,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(255, 241, 241, 0.95);
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(233, 179, 251, 0.3);
         }
 
         nav {
@@ -44,16 +44,16 @@
             font-size: 2.5rem;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #fff;
+            color: #3B0270;
             position: relative;
-            filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.5));
+            filter: drop-shadow(0 4px 12px rgba(111, 0, 255, 0.5));
             text-decoration: none;
         }
 
         .logo .k {
             font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -69,7 +69,7 @@
         }
 
         .nav-links a {
-            color: #fff;
+            color: #3B0270;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -78,7 +78,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #667eea;
+            color: #6F00FF;
         }
 
         .nav-links a::after {
@@ -88,7 +88,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             transition: width 0.3s ease;
         }
 
@@ -104,11 +104,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%), url('unnamed.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
             overflow: hidden;
             padding: 0 5%;
         }
@@ -117,13 +113,237 @@
             max-width: 1200px;
             text-align: center;
             z-index: 1;
+            position: relative;
+        }
+
+        /* Floating People with Computers */
+        .floating-shape {
+            position: absolute;
+            backdrop-filter: blur(10px);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        /* Person 1 - Sitting at desk */
+        .floating-shape:nth-child(1) {
+            width: 120px;
+            height: 100px;
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+        .floating-shape:nth-child(1)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(59, 2, 112, 0.3);
+        }
+        .floating-shape:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2s ease-in-out infinite alternate;
+        }
+
+        /* Person 2 - Standing with laptop */
+        .floating-shape:nth-child(2) {
+            width: 100px;
+            height: 120px;
+            top: 55%;
+            right: 12%;
+            animation-delay: 2s;
+        }
+        .floating-shape:nth-child(2)::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 25px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #3B0270 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 5px;
+            left: 25px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 30px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 3px;
+            top: 35px;
+            left: 27px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Person 3 - Coding at computer */
+        .floating-shape:nth-child(3) {
+            width: 140px;
+            height: 110px;
+            top: 35%;
+            left: 75%;
+            animation-delay: 4s;
+        }
+        .floating-shape:nth-child(3)::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 32px;
+            background: linear-gradient(135deg, #3B0270 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 8px;
+            left: 15px;
+            box-shadow: 0 2px 4px rgba(59, 2, 112, 0.3);
+        }
+        .floating-shape:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 35px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        /* Person 4 - Mobile developer */
+        .floating-shape:nth-child(4) {
+            width: 90px;
+            height: 130px;
+            top: 75%;
+            left: 18%;
+            animation-delay: 1s;
+        }
+        .floating-shape:nth-child(4)::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 22px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(4)::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 8px;
+            top: 35px;
+            left: 32px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.8s ease-in-out infinite alternate;
+        }
+
+        /* Person 5 - Designer with tablet */
+        .floating-shape:nth-child(5) {
+            width: 110px;
+            height: 115px;
+            top: 25%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+        .floating-shape:nth-child(5)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 28px;
+            background: linear-gradient(135deg, #3B0270 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 12px;
+            left: 18px;
+            box-shadow: 0 2px 4px rgba(59, 2, 112, 0.3);
+        }
+        .floating-shape:nth-child(5)::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 2.2s ease-in-out infinite alternate;
+        }
+
+        /* Person 6 - Programmer with dual screens */
+        .floating-shape:nth-child(6) {
+            width: 160px;
+            height: 105px;
+            top: 65%;
+            left: 65%;
+            animation-delay: 5s;
+        }
+        .floating-shape:nth-child(6)::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 35px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #3B0270 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 5px;
+            left: 10px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(6)::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 25px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 3px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            animation: screenGlow 1.3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-25px) rotate(5deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-5deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-35px) rotate(3deg) scale(1.02);
+            }
+        }
+
+        @keyframes screenGlow {
+            0% {
+                box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4), 0 0 10px rgba(111, 0, 255, 0.2);
+            }
+            100% {
+                box-shadow: 0 2px 12px rgba(111, 0, 255, 0.6), 0 0 20px rgba(111, 0, 255, 0.4);
+            }
         }
 
         .hero h1 {
             font-size: 4.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 50%, #E9B3FB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -131,14 +351,14 @@
 
         .hero p {
             font-size: 1.5rem;
-            color: #b8b8b8;
+            color: #6F00FF;
             margin-bottom: 3rem;
         }
 
         /* Services Section */
         .services {
             padding: 8rem 5%;
-            background: #0f0f0f;
+            background: rgba(255, 241, 241, 0.02);
         }
 
         .section-title {
@@ -146,10 +366,23 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 4rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 50%, #E9B3FB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+        }
+
+        .services-intro p {
+            font-size: 1.2rem;
+            color: #3B0270;
+            line-height: 1.8;
+            margin-bottom: 2rem;
         }
 
         .services-grid {
@@ -161,12 +394,12 @@
         }
 
         .service-card {
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(145deg, rgba(255, 241, 241, 0.05) 0%, rgba(233, 179, 251, 0.05) 100%);
             padding: 3rem 2rem;
             border-radius: 20px;
             text-align: center;
             transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 241, 241, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -178,7 +411,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(111, 0, 255, 0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -188,25 +421,25 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            box-shadow: 0 20px 50px rgba(111, 0, 255, 0.3);
+            border-color: #6F00FF;
         }
 
         .service-icon {
             font-size: 4rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .service-card h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #6F00FF;
         }
 
         .service-card p {
-            color: #b8b8b8;
-            line-height: 1.8;
-            font-size: 1.1rem;
+            color: #3B0270;
+            line-height: 1.6;
+            font-size: 1.05rem;
             margin-bottom: 2rem;
         }
 
@@ -217,8 +450,8 @@
         }
 
         .service-features li {
-            color: #b8b8b8;
-            margin-bottom: 0.8rem;
+            color: #3B0270;
+            margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
         }
@@ -227,40 +460,34 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #6F00FF;
             font-weight: bold;
-        }
-
-        .service-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 1.5rem;
         }
 
         .service-btn {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 50%, #E9B3FB 100%);
             color: #fff;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 25px;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
         .service-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(111, 0, 255, 0.4);
         }
 
         /* Process Section */
         .process {
             padding: 8rem 5%;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 100%);
+            background: linear-gradient(135deg, rgba(255, 241, 241, 0.05) 0%, rgba(233, 179, 251, 0.05) 100%);
         }
 
-        .process-steps {
+        .process-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
@@ -270,45 +497,54 @@
 
         .process-step {
             text-align: center;
-            position: relative;
+            padding: 2rem;
+            background: rgba(255, 241, 241, 0.9);
+            border-radius: 15px;
+            border: 1px solid rgba(233, 179, 251, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(111, 0, 255, 0.2);
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            margin: 0 auto 2rem;
             color: #fff;
+            margin: 0 auto 1.5rem;
         }
 
         .process-step h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #6F00FF;
         }
 
         .process-step p {
-            color: #b8b8b8;
+            color: #3B0270;
             line-height: 1.6;
         }
 
         /* CTA Section */
         .cta {
             padding: 8rem 5%;
-            background: #0a0a0a;
+            background: rgba(233, 179, 251, 0.02);
             text-align: center;
         }
 
         .cta h2 {
             font-size: 3rem;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -316,71 +552,50 @@
 
         .cta p {
             font-size: 1.3rem;
-            color: #b8b8b8;
+            color: #3B0270;
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
         .cta-btn {
+            display: inline-block;
             padding: 1.2rem 3rem;
-            border-radius: 50px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            color: #fff;
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(111, 0, 255, 0.4);
         }
 
-        .primary-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .primary-btn:hover {
+        .cta-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-        }
-
-        .secondary-btn {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .secondary-btn:hover {
-            background: #667eea;
-            color: #fff;
-            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(111, 0, 255, 0.6);
         }
 
         /* Footer */
         footer {
             padding: 3rem 5%;
-            background: #000;
+            background: rgba(255, 241, 241, 0.9);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(233, 179, 251, 0.3);
         }
 
         .footer-logo {
             font-size: 2rem;
             margin-bottom: 1rem;
             font-weight: 900;
-            color: #fff;
-            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+            color: #3B0270;
+            filter: drop-shadow(0 0 10px rgba(111, 0, 255, 0.3));
         }
         
         .footer-logo .k {
             font-size: 2.8rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -390,7 +605,7 @@
         }
 
         footer p {
-            color: #666;
+            color: #3B0270;
             font-size: 0.95rem;
         }
 
@@ -405,7 +620,7 @@
         .mobile-menu-toggle span {
             width: 25px;
             height: 3px;
-            background: #fff;
+            background: #3B0270;
             margin: 3px 0;
             transition: 0.3s;
             border-radius: 2px;
@@ -429,7 +644,7 @@
             left: -100%;
             width: 100%;
             height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(255, 241, 241, 0.98);
             backdrop-filter: blur(20px);
             z-index: 9999;
             transition: left 0.3s ease;
@@ -453,7 +668,7 @@
         }
 
         .mobile-nav-links a {
-            color: #fff;
+            color: #3B0270;
             text-decoration: none;
             font-size: 1.5rem;
             font-weight: 600;
@@ -461,14 +676,14 @@
         }
 
         .mobile-nav-links a:hover {
-            color: #667eea;
+            color: #6F00FF;
         }
 
         .mobile-nav-close {
             position: absolute;
             top: 2rem;
             right: 2rem;
-            color: #fff;
+            color: #3B0270;
             font-size: 2rem;
             cursor: pointer;
         }
@@ -497,28 +712,18 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .service-card {
-                padding: 2rem 1.5rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            .process-steps {
+            .process-grid {
                 grid-template-columns: 1fr;
             }
 
             .cta h2 {
                 font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
             }
         }
 
@@ -536,15 +741,11 @@
             }
 
             .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .process-step {
                 padding: 1.5rem 1rem;
-            }
-
-            .service-card h3 {
-                font-size: 1.5rem;
-            }
-
-            .service-card p {
-                font-size: 1rem;
             }
         }
     </style>
@@ -579,143 +780,141 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
-    </header>
 
     <section class="hero">
+        <div class="floating-shape">🌐</div>
+        <div class="floating-shape">📱</div>
+        <div class="floating-shape">⚡</div>
         <div class="hero-content">
-            <h1>Nos Services</h1>
-            <p>Des solutions digitales complètes pour transformer votre entreprise</p>
+            <h1>Nos Services Digitaux</h1>
+            <p>Solutions complètes pour propulser votre entreprise dans l'ère digitale</p>
         </div>
     </section>
 
     <section class="services">
-        <h2 class="section-title">Services Détaillés</h2>
+        <h2 class="section-title">Ce Que Nous Faisons</h2>
+        
+        <div class="services-intro">
+            <p>Chez Akoa, nous accompagnons les entreprises sénégalaises dans leur transformation digitale. Notre expertise couvre tous les aspects du développement web et du marketing digital, avec un focus sur des solutions sur mesure adaptées au marché africain.</p>
+        </div>
+
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon"></div>
-                <h3>Sites Web Modernes</h3>
-                <p>Création de sites web responsive et performants adaptés à votre identité unique.</p>
+                <div class="service-icon">🌐</div>
+                <h3>Création de Sites Web</h3>
+                <p>Développement de sites web modernes, responsives et optimisés pour le référencement. De la vitrine corporate aux plateformes e-commerce complexes.</p>
                 <ul class="service-features">
-                    <li>Design responsive et moderne</li>
+                    <li>Sites vitrines professionnels</li>
+                    <li>E-commerce complet</li>
+                    <li>Applications web sur mesure</li>
                     <li>Optimisation SEO intégrée</li>
-                    <li>Interface utilisateur intuitive</li>
-                    <li>Compatible tous appareils</li>
-                    <li>Maintenance et support</li>
+                    <li>Design responsive mobile-first</li>
                 </ul>
-                <div class="service-price">Sur devis</div>
                 <a href="contact.html" class="service-btn">Demander un devis</a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon"></div>
-                <h3>Design de Logos</h3>
-                <p>Conception de logos personnalisés qui reflètent l'essence de votre marque.</p>
+                <div class="service-icon">🎨</div>
+                <h3>Design de Logos & Identité Visuelle</h3>
+                <p>Création d'identités visuelles uniques qui reflètent votre marque. Du logo à la charte graphique complète, nous donnons vie à votre image de marque.</p>
                 <ul class="service-features">
-                    <li>Concepts créatifs uniques</li>
-                    <li>Plusieurs propositions</li>
-                    <li>Fichiers vectoriels inclus</li>
+                    <li>Conception de logos originaux</li>
                     <li>Charte graphique complète</li>
-                    <li>Révisions illimitées</li>
+                    <li>Identité visuelle cohérente</li>
+                    <li>Supports marketing personnalisés</li>
+                    <li>Brand guidelines détaillées</li>
                 </ul>
-                <div class="service-price">Sur devis</div>
-                <a href="contact.html" class="service-btn">Commander</a>
+                <a href="contact.html" class="service-btn">Demander un devis</a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon"></div>
-                <h3>SEO & SEA</h3>
-                <p>Stratégies de référencement pour booster votre visibilité en ligne.</p>
+                <div class="service-icon">📈</div>
+                <h3>Référencement SEO/SEA</h3>
+                <p>Optimisation pour les moteurs de recherche pour améliorer votre visibilité en ligne. Stratégies SEO locales et campagnes publicitaires performantes.</p>
                 <ul class="service-features">
                     <li>Audit SEO complet</li>
                     <li>Optimisation technique</li>
-                    <li>Stratégie de contenu</li>
+                    <li>Stratégie de contenu local</li>
                     <li>Campagnes Google Ads</li>
-                    <li>Suivi et reporting</li>
+                    <li>Reporting mensuel détaillé</li>
                 </ul>
-                <div class="service-price">Sur devis</div>
                 <a href="contact.html" class="service-btn">Demander un devis</a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon"></div>
-                <h3>Intelligence Artificielle</h3>
-                <p>Automatisation intelligente pour optimiser vos processus métier.</p>
+                <div class="service-icon">🤖</div>
+                <h3>Automatisation IA</h3>
+                <p>Intégration d'intelligence artificielle pour automatiser vos processus métier. Chatbots, analyse de données, optimisation des tâches répétitives.</p>
                 <ul class="service-features">
-                    <li>Chatbots personnalisés</li>
-                    <li>Automatisation de tâches</li>
-                    <li>Analyse de données</li>
-                    <li>Solutions sur-mesure</li>
-                    <li>Formation équipe</li>
+                    <li>Chatbots intelligents</li>
+                    <li>Analyse de données automatisée</li>
+                    <li>Automatisation marketing</li>
+                    <li>Optimisation des processus</li>
+                    <li>Intégration API IA</li>
                 </ul>
-                <div class="service-price">Sur devis</div>
                 <a href="contact.html" class="service-btn">Demander un devis</a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon"></div>
+                <div class="service-icon">💻</div>
                 <h3>Développement Sur-Mesure</h3>
-                <p>Solutions web personnalisées pour répondre à vos besoins spécifiques.</p>
+                <p>Développement d'applications web et mobiles personnalisées. Technologies modernes et architectures scalables pour des solutions évolutives.</p>
                 <ul class="service-features">
-                    <li>Applications web complexes</li>
-                    <li>Bases de données sécurisées</li>
-                    <li>API et intégrations</li>
-                    <li>Tests et déploiement</li>
-                    <li>Documentation complète</li>
+                    <li>Applications web React/Node.js</li>
+                    <li>APIs REST et GraphQL</li>
+                    <li>Bases de données optimisées</li>
+                    <li>Applications mobiles hybrides</li>
+                    <li>Intégrations tierces</li>
                 </ul>
-                <div class="service-price">Sur devis</div>
                 <a href="contact.html" class="service-btn">Demander un devis</a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon"></div>
+                <div class="service-icon">🚀</div>
                 <h3>Stratégie Digitale</h3>
-                <p>Accompagnement complet pour développer votre présence en ligne.</p>
+                <p>Accompagnement stratégique pour votre présence en ligne. Audit, plan d'action et mise en place de solutions digitales cohérentes.</p>
                 <ul class="service-features">
                     <li>Audit digital complet</li>
-                    <li>Stratégie personnalisée</li>
-                    <li>Plan d'action détaillé</li>
-                    <li>Formation équipe</li>
-                    <li>Suivi mensuel</li>
+                    <li>Stratégie de marque en ligne</li>
+                    <li>Plan marketing digital</li>
+                    <li>Formation équipe interne</li>
+                    <li>Accompagnement post-lancement</li>
                 </ul>
-                <div class="service-price">Sur devis</div>
                 <a href="contact.html" class="service-btn">Demander un devis</a>
             </div>
         </div>
     </section>
 
     <section class="process">
-        <h2 class="section-title">Notre Processus</h2>
-        <div class="process-steps">
+        <h2 class="section-title">Notre Méthodologie de Travail</h2>
+        <div class="process-grid">
             <div class="process-step">
-                <div class="step-number">1</div>
-                <h3>Écoute & Analyse</h3>
-                <p>Nous prenons le temps de comprendre vos besoins, vos objectifs et votre vision pour créer une solution parfaitement adaptée.</p>
+                <div class="process-number">1</div>
+                <h3>Consultation & Audit</h3>
+                <p>Analyse approfondie de vos besoins, de votre marché et de votre concurrence. Nous identifions les opportunités et les axes d'amélioration.</p>
             </div>
             <div class="process-step">
-                <div class="step-number">2</div>
-                <h3>Conception & Planning</h3>
-                <p>Nous concevons une stratégie détaillée avec des maquettes, un planning et des étapes claires pour votre projet.</p>
+                <div class="process-number">2</div>
+                <h3>Stratégie & Conception</h3>
+                <p>Définition d'une stratégie claire et conception des solutions adaptées. Wireframes, maquettes et planning détaillé.</p>
             </div>
             <div class="process-step">
-                <div class="step-number">3</div>
-                <h3>Développement</h3>
-                <p>Notre équipe développe votre solution avec des technologies modernes et des standards de qualité élevés.</p>
+                <div class="process-number">3</div>
+                <h3>Développement & Tests</h3>
+                <p>Réalisation technique avec les meilleures pratiques. Tests rigoureux et optimisation des performances.</p>
             </div>
             <div class="process-step">
-                <div class="step-number">4</div>
-                <h3>Livraison & Suivi</h3>
-                <p>Nous livrons votre projet, vous formons à son utilisation et assurons un suivi pour garantir votre satisfaction.</p>
+                <div class="process-number">4</div>
+                <h3>Lancement & Formation</h3>
+                <p>Mise en production, formation de votre équipe et accompagnement dans la prise en main de vos nouveaux outils.</p>
             </div>
         </div>
     </section>
 
     <section class="cta">
         <h2>Prêt à Démarrer Votre Projet ?</h2>
-        <p>Contactez-nous pour discuter de vos besoins et obtenir un devis personnalisé. Nous offrons un audit gratuit pour tous nos nouveaux clients.</p>
-        <div class="cta-buttons">
-            <a href="contact.html" class="cta-btn primary-btn">Audit Gratuit</a>
-            <a href="contact.html" class="cta-btn secondary-btn">Demander un Devis</a>
-        </div>
+        <p>Contactez-nous pour discuter de vos besoins et découvrir comment nous pouvons vous aider à atteindre vos objectifs digitaux.</p>
+        <a href="contact.html" class="cta-btn">Demander un Devis Gratuit</a>
     </section>
 
     <footer>
