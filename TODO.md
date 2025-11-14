@@ -1,27 +1,14 @@
-# Corrections pour compatibilité mobile du site Akoa
+# TODO: Corriger la charte graphique pour la compatibilité mobile
 
-## Problèmes identifiés
-- [x] Écran de chargement bloqué sur mobile (setTimeout 2.5s)
-- [x] JavaScript ne s'exécute pas correctement sur certains mobiles
-- [x] Pas de fallback CSS pour les cas où JS échoue
+## Tâches à accomplir:
+- [x] Analyser les différences de couleurs entre desktop et mobile dans index.html et about.html
+- [x] Modifier les media queries pour assurer la cohérence des couleurs
+- [x] Adapter les éléments flottants (floating shapes) au lieu de les cacher sur mobile
+- [ ] Tester la compatibilité sur différentes tailles d'écran
+- [ ] Vérifier que les gradients et couleurs s'affichent correctement sur mobile
 
-## Corrections apportées
-- [x] Modifier le script de chargement pour être plus intelligent
-- [x] Ajouter détection de chargement réel du contenu
-- [x] Implémenter fallback CSS ultra-robuste pour mobile
-- [x] Optimiser les animations pour mobile
-- [x] Ajouter sécurité ultime (3 secondes max)
-- [ ] Tester sur différents appareils mobiles
+## Fichiers concernés:
+- index.html
+- about.html
 
-## Tests effectués
-- [x] Test local avec serveur Python (chargement réussi)
-- [ ] Test sur iOS Safari
-- [ ] Test sur Android Chrome
-- [ ] Test sur connexions lentes
-- [ ] Test avec JavaScript désactivé
-
-## Configuration déploiement
-- [x] Créer netlify.toml avec optimisations
-- [x] Créer _redirects pour Netlify
-- [x] Configurer headers de cache et sécurité
-- [x] Ajouter redirections SEO
+## Statut: En cours
