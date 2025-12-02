@@ -6,17 +6,71 @@
     <title>Contact Akoa - Devis Gratuit Site Web Dakar</title>
     <meta name="description" content="Contactez Akoa pour votre projet digital à Dakar. Audit gratuit, devis personnalisé. Création sites web, SEO, design logo. Réponse sous 24h.">
     <meta name="keywords" content="contact Akoa Dakar, devis site web Sénégal, agence digitale Dakar, audit gratuit web, contact développeur Dakar">
-    <!-- Chargement Formspree pour l'envoi d'emails -->
-    <script src="https://cdn.jsdelivr.net/npm/@formspree/core@3/dist/index.min.js"></script>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Contact Akoa - Devis Gratuit Site Web Dakar</title>
-    <meta name="description" content="Contactez Akoa pour votre projet digital à Dakar. Audit gratuit, devis personnalisé. Création sites web, SEO, design logo. Réponse sous 24h.">
-    <meta name="keywords" content="contact Akoa Dakar, devis site web Sénégal, agence digitale Dakar, audit gratuit web, contact développeur Dakar">
-
+    <!-- Chargement EmailJS avec fallback -->
+    <script>
+        // Fonction pour charger EmailJS dynamiquement avec fallback
+        function loadEmailJS() {
+            return new Promise((resolve, reject) => {
+                // Essayer d'abord jsdelivr
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+                script.async = true;
+                
+                script.onload = function() {
+                    console.log('✅ EmailJS chargé depuis jsdelivr.net');
+                    // Vérifier que emailjs est bien disponible
+                    setTimeout(() => {
+                        if (window.emailjs) {
+                            console.log('✅ window.emailjs disponible:', typeof window.emailjs);
+                            console.log('✅ Méthodes disponibles:', Object.keys(window.emailjs));
+                        } else {
+                            console.warn('⚠️ window.emailjs non disponible après chargement');
+                        }
+                    }, 100);
+                    resolve();
+                };
+                
+                script.onerror = function() {
+                    console.warn('⚠️ jsdelivr.net échoué, tentative avec unpkg.com...');
+                    // Fallback vers unpkg.com
+                    const fallbackScript = document.createElement('script');
+                    fallbackScript.type = 'text/javascript';
+                    fallbackScript.src = 'https://unpkg.com/@emailjs/browser@3/dist/email.min.js';
+                    fallbackScript.async = true;
+                
+                    fallbackScript.onload = function() {
+                        console.log('✅ EmailJS chargé depuis unpkg.com');
+                        setTimeout(() => {
+                            if (window.emailjs) {
+                                console.log('✅ window.emailjs disponible:', typeof window.emailjs);
+                            }
+                        }, 100);
+                        resolve();
+                    };
+                    
+                    fallbackScript.onerror = function() {
+                        console.error('❌ Impossible de charger EmailJS depuis les CDN');
+                        console.error('Vérifiez la console du navigateur pour les erreurs CSP ou réseau');
+                        // Ne pas rejeter immédiatement, laisser la fonction initEmailJS gérer
+                        console.warn('EmailJS sera chargé de manière asynchrone lors de l\'initialisation');
+                        resolve(); // Résoudre quand même pour permettre les tentatives ultérieures
+                    };
+                    
+                    document.head.appendChild(fallbackScript);
+                };
+                
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Charger EmailJS dès que possible
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadEmailJS);
+        } else {
+            loadEmailJS();
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -27,8 +81,20 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            background: #FFF1F1;
-            color: #3B0270;
+            background: #ffffff url('unnamed.jpg') center center/cover no-repeat fixed;
+            color: #000000;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: -1;
         }
 
         /* Header & Navigation */
@@ -37,10 +103,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 241, 241, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
-            border-bottom: 1px solid rgba(233, 179, 251, 0.3);
+            border-bottom: 1px solid rgba(111, 0, 255, 0.2);
         }
 
         nav {
@@ -75,37 +141,55 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 1rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: #3B0270;
+            color: #2a2a2a;
             text-decoration: none;
             font-size: 1rem;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
             transition: all 0.3s ease;
             position: relative;
+            background: transparent;
+            border: 2px solid transparent;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #6F00FF;
+            color: #ffffff;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-color: #6F00FF;
+            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        .nav-links a::after {
+        .nav-links a.active {
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.4);
+        }
+
+        .nav-links a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 2px;
+            right: 0;
+            bottom: 0;
+            border-radius: 25px;
             background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            transition: width 0.3s ease;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            opacity: 1;
         }
 
         /* Hero Section */
@@ -115,19 +199,55 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 241, 241, 0.8) 0%, rgba(233, 179, 251, 0.8) 100%);
+            background: rgba(255, 255, 255, 0.3);
             overflow: hidden;
             padding: 0 5%;
         }
 
-        /* Floating People with Computers */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(200, 200, 200, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Floating Shapes - Illustrations */
         .floating-shape {
             position: absolute;
             backdrop-filter: blur(10px);
-            animation: float 10s ease-in-out infinite;
+            animation: floatShape 12s ease-in-out infinite;
         }
 
-        /* Person 1 - Sitting at desk */
+            /* Shape 1 - Computer */
         .floating-shape:nth-child(1) {
             width: 120px;
             height: 100px;
@@ -140,26 +260,26 @@
             position: absolute;
             width: 20px;
             height: 30px;
-            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             top: 10px;
             left: 20px;
-            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         .floating-shape:nth-child(1)::after {
             content: '';
             position: absolute;
             width: 50px;
             height: 25px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            background: linear-gradient(135deg, #cccccc 0%, #666666 100%);
             border-radius: 5px;
             top: 45px;
             left: 35px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
             animation: screenGlow 2s ease-in-out infinite alternate;
         }
 
-        /* Person 2 - Standing with laptop */
+        /* Shape 2 - Laptop */
         .floating-shape:nth-child(2) {
             width: 100px;
             height: 120px;
@@ -172,26 +292,26 @@
             position: absolute;
             width: 18px;
             height: 25px;
-            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            background: linear-gradient(135deg, #cccccc 0%, #ffffff 100%);
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             top: 5px;
             left: 25px;
-            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         .floating-shape:nth-child(2)::after {
             content: '';
             position: absolute;
             width: 45px;
             height: 30px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            background: linear-gradient(135deg, #888888 0%, #ffffff 100%);
             border-radius: 3px;
             top: 35px;
             left: 27px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
             animation: screenGlow 1.5s ease-in-out infinite alternate;
         }
 
-        /* Person 3 - Coding at computer */
+        /* Shape 3 - Coding */
         .floating-shape:nth-child(3) {
             width: 140px;
             height: 110px;
@@ -204,250 +324,26 @@
             position: absolute;
             width: 22px;
             height: 32px;
-            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             top: 8px;
             left: 15px;
-            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         .floating-shape:nth-child(3)::after {
             content: '';
             position: absolute;
             width: 60px;
             height: 35px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            background: linear-gradient(135deg, #888888 0%, #ffffff 100%);
             border-radius: 5px;
             top: 45px;
             left: 40px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
             animation: screenGlow 2.5s ease-in-out infinite alternate;
         }
 
-        /* Person 4 - Mobile developer */
-        .floating-shape:nth-child(4) {
-            width: 90px;
-            height: 130px;
-            top: 75%;
-            left: 18%;
-            animation-delay: 1s;
-        }
-        .floating-shape:nth-child(4)::before {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 22px;
-            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 10px;
-            left: 20px;
-            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
-        }
-        .floating-shape:nth-child(4)::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 40px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 8px;
-            top: 35px;
-            left: 32px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 1.8s ease-in-out infinite alternate;
-        }
-
-        /* Person 5 - Designer with tablet */
-        .floating-shape:nth-child(5) {
-            width: 110px;
-            height: 115px;
-            top: 25%;
-            right: 8%;
-            animation-delay: 3s;
-        }
-        .floating-shape:nth-child(5)::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 28px;
-            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 12px;
-            left: 18px;
-            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
-        }
-        .floating-shape:nth-child(5)::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 50px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 5px;
-            top: 45px;
-            left: 35px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2.2s ease-in-out infinite alternate;
-        }
-
-        /* Person 6 - Programmer with dual screens */
-        .floating-shape:nth-child(6) {
-            width: 160px;
-            height: 105px;
-            top: 65%;
-            left: 65%;
-            animation-delay: 5s;
-        }
-        .floating-shape:nth-child(6)::before {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 35px;
-            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 5px;
-            left: 10px;
-            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
-        }
-        .floating-shape:nth-child(6)::after {
-            content: '';
-            position: absolute;
-            width: 35px;
-            height: 25px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 3px;
-            top: 45px;
-            left: 40px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 1.3s ease-in-out infinite alternate;
-        }
-
-        /* Person 7 - Data scientist with charts */
-        .floating-shape:nth-child(7) {
-            width: 130px;
-            height: 125px;
-            top: 45%;
-            left: 5%;
-            animation-delay: 6s;
-        }
-        .floating-shape:nth-child(7)::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 28px;
-            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 10px;
-            left: 25px;
-            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
-        }
-        .floating-shape:nth-child(7)::after {
-            content: '';
-            position: absolute;
-            width: 55px;
-            height: 35px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 5px;
-            top: 45px;
-            left: 37px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2.8s ease-in-out infinite alternate;
-        }
-
-        /* Person 8 - UX designer with wireframes */
-        .floating-shape:nth-child(8) {
-            width: 115px;
-            height: 135px;
-            top: 70%;
-            right: 3%;
-            animation-delay: 7s;
-        }
-        .floating-shape:nth-child(8)::before {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 24px;
-            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 8px;
-            left: 22px;
-            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
-        }
-        .floating-shape:nth-child(8)::after {
-            content: '';
-            position: absolute;
-            width: 45px;
-            height: 55px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 8px;
-            top: 40px;
-            left: 35px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 1.9s ease-in-out infinite alternate;
-        }
-
-        /* Person 9 - Game developer */
-        .floating-shape:nth-child(9) {
-            width: 125px;
-            height: 115px;
-            top: 20%;
-            left: 85%;
-            animation-delay: 8s;
-        }
-        .floating-shape:nth-child(9)::before {
-            content: '';
-            position: absolute;
-            width: 22px;
-            height: 30px;
-            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 12px;
-            left: 20px;
-            box-shadow: 0 2px 4px rgba(111, 0, 255, 0.3);
-        }
-        .floating-shape:nth-child(9)::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 30px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 5px;
-            top: 50px;
-            left: 37px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2.3s ease-in-out infinite alternate;
-        }
-
-        /* Person 10 - Cybersecurity expert */
-        .floating-shape:nth-child(10) {
-            width: 140px;
-            height: 120px;
-            top: 50%;
-            right: 20%;
-            animation-delay: 9s;
-        }
-        .floating-shape:nth-child(10)::before {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 32px;
-            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 6px;
-            left: 18px;
-            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
-        }
-        .floating-shape:nth-child(10)::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 40px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            border-radius: 5px;
-            top: 45px;
-            left: 40px;
-            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2.6s ease-in-out infinite alternate;
-        }
-
-        @keyframes float {
+        @keyframes floatShape {
             0%, 100% {
                 transform: translateY(0px) rotate(0deg) scale(1);
             }
@@ -464,17 +360,11 @@
 
         @keyframes screenGlow {
             0% {
-                box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4), 0 0 10px rgba(111, 0, 255, 0.2);
+                box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.1);
             }
             100% {
-                box-shadow: 0 2px 12px rgba(111, 0, 255, 0.6), 0 0 20px rgba(111, 0, 255, 0.4);
+                box-shadow: 0 2px 12px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
             }
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            text-align: center;
-            z-index: 1;
         }
 
         .hero h1 {
@@ -489,14 +379,17 @@
 
         .hero p {
             font-size: 1.5rem;
-            color: #3B0270;
+            color: #1a1a1a;
             margin-bottom: 3rem;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
         }
 
         /* Contact Section */
         .contact {
             padding: 8rem 5%;
-            background: rgba(255, 241, 241, 0.02);
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
         }
 
         .contact-content {
@@ -524,10 +417,11 @@
 
         /* Contact Form */
         .contact-form {
-            background: linear-gradient(145deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
+            background: rgba(255, 255, 255, 0.95);
             padding: 3rem;
             border-radius: 20px;
-            border: 1px solid rgba(233, 179, 251, 0.3);
+            border: 2px solid rgba(111, 0, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -537,7 +431,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #6F00FF;
+            color: #000000;
             font-weight: 600;
         }
 
@@ -546,10 +440,10 @@
         .form-group select {
             width: 100%;
             padding: 1rem;
-            background: rgba(255, 241, 241, 0.05);
-            border: 1px solid rgba(233, 179, 251, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(111, 0, 255, 0.4);
             border-radius: 10px;
-            color: #3B0270;
+            color: #000000;
             font-size: 1rem;
             transition: all 0.3s ease;
         }
@@ -566,8 +460,8 @@
         }
 
         .form-group select option {
-            background: #1a1a2e;
-            color: #fff;
+            background: #ffffff;
+            color: #000000;
         }
 
         .form-group input:focus,
@@ -575,7 +469,8 @@
         .form-group select:focus {
             outline: none;
             border-color: #6F00FF;
-            box-shadow: 0 0 0 3px rgba(111, 0, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(111, 0, 255, 0.3);
+            background: rgba(255, 255, 255, 1);
         }
 
         .form-group textarea {
@@ -585,14 +480,14 @@
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: #666;
+            color: rgba(0, 0, 0, 0.5);
         }
 
         .submit-btn {
             width: 100%;
             padding: 1.2rem;
             background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
-            color: #FFF1F1;
+            color: #ffffff;
             border: none;
             border-radius: 10px;
             font-size: 1.1rem;
@@ -605,6 +500,7 @@
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(111, 0, 255, 0.6);
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
         }
 
         /* Contact Info */
@@ -617,15 +513,16 @@
             align-items: center;
             margin-bottom: 2.5rem;
             padding: 2rem;
-            background: linear-gradient(145deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            border: 1px solid rgba(233, 179, 251, 0.3);
+            border: 2px solid rgba(111, 0, 255, 0.3);
             transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(111, 0, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             border-color: #6F00FF;
         }
 
@@ -638,29 +535,43 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
+            color: #ffffff;
             margin-right: 1.5rem;
             flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(111, 0, 255, 0.5);
         }
 
         .contact-details h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #6F00FF;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .contact-details p {
-            color: #3B0270;
+            color: #2a2a2a;
             font-size: 1rem;
+            font-weight: 400;
         }
 
         .contact-details a {
             color: #6F00FF;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .contact-details a:hover {
-            color: #E9B3FB;
+            color: #3B0270;
+            text-decoration: underline;
         }
 
         /* Social Links */
@@ -672,7 +583,7 @@
         .social-links h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: #6F00FF;
+            color: #000000;
         }
 
         .social-grid {
@@ -684,12 +595,12 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FFF1F1;
+            color: #ffffff;
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
@@ -697,7 +608,7 @@
 
         .social-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(111, 0, 255, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
         .social-link.facebook:hover {
@@ -717,13 +628,15 @@
 
         .social-link.tiktok:hover {
             background: #000000;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
         }
 
         /* FAQ Section */
         .faq {
             padding: 8rem 5%;
-            background: linear-gradient(135deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
         }
 
         .faq-content {
@@ -733,15 +646,16 @@
 
         .faq-item {
             margin-bottom: 2rem;
-            background: linear-gradient(145deg, rgba(255, 241, 241, 0.9) 0%, rgba(233, 179, 251, 0.9) 100%);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            border: 1px solid rgba(233, 179, 251, 0.3);
+            border: 2px solid rgba(111, 0, 255, 0.3);
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .faq-question {
             padding: 1.5rem 2rem;
-            background: rgba(111, 0, 255, 0.1);
+            background: rgba(0, 0, 0, 0.05);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -750,16 +664,16 @@
         }
 
         .faq-question:hover {
-            background: rgba(111, 0, 255, 0.2);
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .faq-question h3 {
-            color: #6F00FF;
+            color: #000000;
             font-size: 1.2rem;
         }
 
         .faq-icon {
-            color: #6F00FF;
+            color: #000000;
             font-size: 1.5rem;
             transition: transform 0.3s ease;
         }
@@ -777,7 +691,7 @@
         }
 
         .faq-answer p {
-            color: #3B0270;
+            color: #333333;
             line-height: 1.6;
         }
 
@@ -788,9 +702,11 @@
         /* Footer */
         footer {
             padding: 3rem 5%;
-            background: rgba(255, 241, 241, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             text-align: center;
-            border-top: 1px solid rgba(233, 179, 251, 0.3);
+            border-top: 1px solid rgba(111, 0, 255, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-logo {
@@ -813,7 +729,7 @@
         }
 
         footer p {
-            color: #3B0270;
+            color: rgba(0, 0, 0, 0.9);
             font-size: 0.95rem;
         }
 
@@ -894,14 +810,14 @@
         }
 
         .confirmation-content {
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
             max-width: 500px;
             width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(111, 0, 255, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             transform: scale(0.7) translateY(50px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -950,14 +866,14 @@
 
         .confirmation-message {
             font-size: 1.1rem;
-            color: #b8b8b8;
+            color: rgba(0, 0, 0, 0.9);
             margin-bottom: 2rem;
             line-height: 1.6;
         }
 
         .confirmation-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            color: #ffffff;
             border: none;
             padding: 1rem 2rem;
             border-radius: 10px;
@@ -965,12 +881,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(111, 0, 255, 0.4);
         }
 
         .confirmation-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 15px 40px rgba(111, 0, 255, 0.6);
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
         }
 
         /* Animation d'entrée pour le contenu */
@@ -1040,7 +957,7 @@
         .mobile-menu-toggle span {
             width: 25px;
             height: 3px;
-            background: #fff;
+            background: #000000;
             margin: 3px 0;
             transition: 0.3s;
             border-radius: 2px;
@@ -1064,7 +981,7 @@
             left: -100%;
             width: 100%;
             height: 100vh;
-            background: rgba(255, 241, 241, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 9999;
             transition: left 0.3s ease;
@@ -1087,29 +1004,62 @@
             margin: 2rem 0;
         }
 
-        .mobile-nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .mobile-nav-links a:hover {
-            color: #667eea;
+        .mobile-nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            color: #2a2a2a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid transparent;
+        }
+
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-color: #6F00FF;
+            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.3);
+            transform: translateX(10px);
         }
 
         .mobile-nav-close {
             position: absolute;
             top: 2rem;
             right: 2rem;
-            color: #fff;
+            color: #000;
             font-size: 2rem;
             cursor: pointer;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 3%;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .logo .k {
+                font-size: 2.8rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -1118,8 +1068,98 @@
                 display: flex;
             }
 
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
             .hero {
                 background-attachment: scroll;
+            }
+
+            /* Optimisation des illustrations flottantes pour mobile */
+            .hero::before {
+                width: 300px;
+                height: 300px;
+                top: -150px;
+                right: -150px;
+            }
+
+            .hero::after {
+                width: 250px;
+                height: 250px;
+                bottom: -125px;
+                left: -125px;
+            }
+
+            /* Réduction des floating-shapes sur mobile */
+            .floating-shape {
+                opacity: 0.6;
+                /* Réduire backdrop-filter sur mobile pour meilleure performance */
+                backdrop-filter: blur(5px);
+            }
+
+            .floating-shape:nth-child(1) {
+                width: 80px;
+                height: 65px;
+                top: 10%;
+                left: 5%;
+            }
+
+            .floating-shape:nth-child(1)::before {
+                width: 12px;
+                height: 18px;
+                top: 5px;
+                left: 12px;
+            }
+
+            .floating-shape:nth-child(1)::after {
+                width: 30px;
+                height: 15px;
+                top: 28px;
+                left: 20px;
+            }
+
+            .floating-shape:nth-child(2) {
+                width: 70px;
+                height: 85px;
+                top: 60%;
+                right: 5%;
+            }
+
+            .floating-shape:nth-child(2)::before {
+                width: 12px;
+                height: 16px;
+                top: 3px;
+                left: 15px;
+            }
+
+            .floating-shape:nth-child(2)::after {
+                width: 30px;
+                height: 20px;
+                top: 22px;
+                left: 18px;
+            }
+
+            .floating-shape:nth-child(3) {
+                width: 90px;
+                height: 70px;
+                top: 40%;
+                left: 70%;
+            }
+
+            .floating-shape:nth-child(3)::before {
+                width: 14px;
+                height: 20px;
+                top: 5px;
+                left: 10px;
+            }
+
+            .floating-shape:nth-child(3)::after {
+                width: 40px;
+                height: 22px;
+                top: 28px;
+                left: 25px;
             }
 
             .hero h1 {
@@ -1159,6 +1199,102 @@
         }
 
         @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 2%;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo .k {
+                font-size: 2.5rem;
+            }
+
+            /* Optimisation encore plus poussée pour petits écrans */
+            .hero {
+                padding: 0 2%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .hero::before {
+                width: 200px;
+                height: 200px;
+                top: -100px;
+                right: -100px;
+            }
+
+            .hero::after {
+                width: 180px;
+                height: 180px;
+                bottom: -90px;
+                left: -90px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                padding: 0 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem 1rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.8rem;
+                font-size: 0.95rem;
+            }
+
+            .submit-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            /* Masquer certaines illustrations sur très petits écrans */
+            .floating-shape:nth-child(3) {
+                display: none;
+            }
+
+            .floating-shape:nth-child(1),
+            .floating-shape:nth-child(2) {
+                opacity: 0.4;
+                backdrop-filter: none; /* Désactiver backdrop-filter sur très petits écrans */
+            }
+
+            /* Réduire les animations sur petits écrans pour meilleure performance */
+            .floating-shape {
+                animation-duration: 8s;
+            }
+
+            .floating-shape:nth-child(1) {
+                width: 60px;
+                height: 50px;
+                top: 8%;
+                left: 3%;
+            }
+
+            .floating-shape:nth-child(2) {
+                width: 55px;
+                height: 65px;
+                top: 65%;
+                right: 3%;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -1204,7 +1340,7 @@
 
        <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-close" id="mobileNavClose"> x</div>
+        <div class="mobile-nav-close" id="mobileNavClose">×</div>
         <ul class="mobile-nav-links">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="services.html">Services</a></li>
@@ -1215,13 +1351,6 @@
     </div>
 
     <section class="hero">
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
         <div class="floating-shape"></div>
         <div class="floating-shape"></div>
         <div class="floating-shape"></div>
@@ -1237,7 +1366,7 @@
             <h2 class="section-title">Parlons de Votre Projet</h2>
             <div class="contact-grid">
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/xpwnqkqr" method="POST">
+                    <form id="contactForm" method="post" action="#" novalidate>
                         <div class="form-group">
                             <label for="name">Nom complet *</label>
                             <input type="text" id="name" name="name" required placeholder="Votre nom complet">
@@ -1436,13 +1565,10 @@
         // ============================================
         // CONFIGURATION EMAILJS - À METTRE À JOUR ICI
         // ============================================
-        const FORMSPREE_CONFIG = {
-            formId: "xpwnqkqr",
-            recipientEmail: "akoadigital@gmail.com"
         const EMAILJS_CONFIG = {
             publicKey: "KOB5BhUNJxEYW-Q6W",           // Clé publique EmailJS (Account → General)
-            serviceID: "service_8c2m8vd",              // ID du service EmailJS (Email Services)
-            templateID: "template_ulpre48",             // ID du template EmailJS (Email Templates)
+            serviceID: "service_nkibwk7",              // ID du service EmailJS (Email Services)
+            templateID: "template_wl9p3f4",             // ID du template EmailJS (Email Templates)
             recipientEmail: "akoadigital@gmail.com"     // Email de réception
         };
         
@@ -1468,6 +1594,78 @@
                 isProduction: !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')
             });
         })();
+
+        // Fonction de test EmailJS (accessible depuis la console)
+        window.testEmailJS = function() {
+            console.log('🧪 TEST EmailJS - Démarrage...');
+            console.log('📋 Configuration:', EMAILJS_CONFIG);
+            
+            // Test 1: Vérifier que EmailJS est chargé
+            if (!window.emailjs) {
+                console.error('❌ TEST ÉCHOUÉ: window.emailjs n\'existe pas');
+                console.log('💡 Solution: Attendez quelques secondes et réessayez');
+                return false;
+            }
+            console.log('✅ TEST 1: EmailJS chargé');
+
+            // Test 2: Vérifier l'initialisation
+            if (typeof window.emailjs.init === 'function') {
+                try {
+                    window.emailjs.init(EMAILJS_CONFIG.publicKey);
+                    console.log('✅ TEST 2: Initialisation réussie');
+                } catch (err) {
+                    console.error('❌ TEST 2 ÉCHOUÉ: Erreur d\'initialisation', err);
+                    return false;
+                }
+            } else {
+                console.error('❌ TEST 2 ÉCHOUÉ: emailjs.init n\'existe pas');
+                return false;
+            }
+
+            // Test 3: Vérifier que send existe
+            if (typeof window.emailjs.send === 'function') {
+                console.log('✅ TEST 3: Fonction send() disponible');
+            } else {
+                console.error('❌ TEST 3 ÉCHOUÉ: emailjs.send n\'existe pas');
+                return false;
+            }
+
+            // Test 4: Test d'envoi avec données de test
+            console.log('🧪 TEST 4: Envoi d\'email de test...');
+            const testParams = {
+                from_name: 'Test Akoa',
+                from_email: 'test@example.com',
+                reply_to: 'test@example.com',
+                to_email: EMAILJS_CONFIG.recipientEmail,
+                phone: '+221 77 123 45 67',
+                company: 'Test Company',
+                service: 'website',
+                budget: '100k-200k',
+                message: 'Ceci est un email de test depuis la console',
+                name: 'Test Akoa',
+                email: 'test@example.com'
+            };
+
+            window.emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, testParams)
+                .then(function(response) {
+                    console.log('✅✅✅ TOUS LES TESTS RÉUSSIS !');
+                    console.log('📧 Email de test envoyé avec succès!', response);
+                    alert('✅ Test réussi ! Email de test envoyé. Vérifiez votre boîte mail.');
+                })
+                .catch(function(error) {
+                    console.error('❌ TEST 4 ÉCHOUÉ:', error);
+                    console.error('📋 Détails:', {
+                        status: error?.status,
+                        text: error?.text,
+                        message: error?.message
+                    });
+                    alert('❌ Test échoué. Vérifiez la console pour plus de détails.');
+                });
+
+            return true;
+        };
+
+        console.log('💡 Pour tester EmailJS, tapez dans la console: testEmailJS()');
         // ============================================
 
         // Déclaration globale pour que closeConfirmationModal soit accessible partout
@@ -1613,7 +1811,7 @@
             // Événement sur le bouton "Parfait !"
             if (confirmationBtn) {
                 confirmationBtn.addEventListener('click', function () {
-                    closeConfirmationModal();
+                closeConfirmationModal();
                 });
             }
 
@@ -1630,13 +1828,19 @@
             });
 
             if (contactForm && submitBtn) {
+                // Empêcher toute soumission par défaut
+                contactForm.setAttribute('onsubmit', 'return false;');
+                
                 contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const originalText = submitBtn.textContent;
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Envoi en cours...';
-                    submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    return false;
+            
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+                            submitBtn.style.background = 'linear-gradient(135deg, #ffffff 0%, #888888 100%)';
 
                     // Récupération des données du formulaire avec vérification
                     const nameInput = document.getElementById('name');
@@ -1647,7 +1851,7 @@
                     const budgetInput = document.getElementById('budget');
                     const messageInput = document.getElementById('message');
 
-                    const formData = {
+            const formData = {
                         name: nameInput ? (nameInput.value || '').trim() : '',
                         email: emailInput ? (emailInput.value || '').trim() : '',
                         phone: phoneInput ? (phoneInput.value || '').trim() : '',
@@ -1734,47 +1938,110 @@
                     }
 
                     function performSend() {
+                        // Vérification finale avant envoi
+                        if (!EMAILJS_CONFIG.serviceID || !EMAILJS_CONFIG.templateID || !EMAILJS_CONFIG.publicKey) {
+                            alert('❌ Configuration EmailJS incomplète. Vérifiez les IDs dans le code.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.background = '';
+                            return;
+                        }
+
+                        console.log('🚀 Envoi EmailJS avec:', {
+                            serviceID: EMAILJS_CONFIG.serviceID,
+                            templateID: EMAILJS_CONFIG.templateID,
+                            publicKey: EMAILJS_CONFIG.publicKey.substring(0, 10) + '...',
+                            params: templateParams
+                        });
+
+                        // Vérifier que emailjs.send existe
+                        if (!window.emailjs || typeof window.emailjs.send !== 'function') {
+                            alert('❌ EmailJS n\'est pas correctement initialisé. Rechargez la page.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.background = '';
+                            return;
+                        }
+
+                        // Envoi avec gestion d'erreur améliorée
+                        console.log('📤 Appel EmailJS.send()...');
+                        console.log('🔑 Service ID:', EMAILJS_CONFIG.serviceID);
+                        console.log('📝 Template ID:', EMAILJS_CONFIG.templateID);
+                        console.log('🔐 Public Key:', EMAILJS_CONFIG.publicKey.substring(0, 10) + '...');
+                        
                         window.emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, templateParams)
                         .then(function (response) {
+                            console.log('✅ Email envoyé avec succès!', response);
+                            console.log('📧 Response status:', response.status);
+                            console.log('📧 Response text:', response.text);
                             submitBtn.textContent = 'Message envoyé !';
                             submitBtn.style.background = '#25D366';
                             contactForm.reset();
                             setTimeout(showConfirmationModal, 500);
                             setTimeout(function () {
-                                submitBtn.disabled = false;
-                                submitBtn.textContent = originalText;
-                                submitBtn.style.background = '';
-                            }, 3000);
-                        })
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                })
                         .catch(function (error) {
-                            console.error('❌ Erreur EmailJS:', error);
-                            console.error('Configuration utilisée:', {
+                            console.error('❌ Erreur EmailJS complète:', error);
+                            console.error('📋 Détails complets de l\'erreur:', {
+                                status: error?.status,
+                                text: error?.text,
+                                message: error?.message,
+                                statusText: error?.statusText,
+                                error: error
+                            });
+                            console.error('🔧 Configuration utilisée:', {
                                 serviceID: EMAILJS_CONFIG.serviceID,
                                 templateID: EMAILJS_CONFIG.templateID,
-                                publicKey: EMAILJS_CONFIG.publicKey ? '✅ Définie' : '❌ Manquante'
+                                publicKey: EMAILJS_CONFIG.publicKey ? '✅ Définie (' + EMAILJS_CONFIG.publicKey.substring(0, 10) + '...)' : '❌ Manquante'
                             });
-                            submitBtn.textContent = 'Erreur - Réessayer';
-                            submitBtn.style.background = '#e74c3c';
-
+                    
+                    submitBtn.textContent = 'Erreur - Réessayer';
+                    submitBtn.style.background = '#e74c3c';
+                    
                             let msg = 'Erreur lors de l\'envoi du message.\n\n';
                             msg += `Status: ${error?.status || 'inconnu'}\n`;
-                            msg += `Message: ${error?.text || error?.message || 'Erreur inconnue'}\n\n`;
-                            msg += 'Configuration actuelle :\n';
-                            msg += `• Service ID: ${EMAILJS_CONFIG.serviceID}\n`;
-                            msg += `• Template ID: ${EMAILJS_CONFIG.templateID}\n\n`;
-                            msg += 'Vérifiez dans EmailJS :\n';
-                            msg += '• Service ID correct\n';
-                            msg += '• Template ID correct\n';
-                            msg += '• Variables du template correspondent\n';
-                            msg += '• Clé publique valide';
+                            msg += `Message: ${error?.text || error?.message || error?.statusText || 'Erreur inconnue'}\n\n`;
+                            
+                            // Message spécifique pour "Form not found"
+                            if (error?.text && (error.text.includes('Form not found') || error.text.includes('form hashid'))) {
+                                msg += '⚠️ ERREUR: Form not found / Form hashid\n\n';
+                                msg += 'Cette erreur signifie que :\n';
+                                msg += '• Le Service ID ou Template ID n\'existe pas dans EmailJS\n';
+                                msg += '• OU le service est configuré pour utiliser Formspree\n\n';
+                                msg += '🔧 SOLUTION :\n\n';
+                                msg += '1. Allez dans EmailJS Dashboard → Email Services\n';
+                                msg += '   Vérifiez que le service "' + EMAILJS_CONFIG.serviceID + '" existe\n';
+                                msg += '   ⚠️ IMPORTANT : Le service doit être Gmail/Outlook, PAS Formspree\n\n';
+                                msg += '2. Allez dans EmailJS Dashboard → Email Templates\n';
+                                msg += '   Vérifiez que le template "' + EMAILJS_CONFIG.templateID + '" existe\n';
+                                msg += '   Dans les paramètres du template, sélectionnez le service "' + EMAILJS_CONFIG.serviceID + '"\n\n';
+                                msg += '3. Vérifiez Account → General\n';
+                                msg += '   La clé publique doit être : ' + EMAILJS_CONFIG.publicKey + '\n\n';
+                                msg += '4. Si le service utilise Formspree, créez un NOUVEAU service avec Gmail/Outlook';
+                    } else {
+                                msg += 'Configuration actuelle :\n';
+                                msg += `• Service ID: ${EMAILJS_CONFIG.serviceID}\n`;
+                                msg += `• Template ID: ${EMAILJS_CONFIG.templateID}\n`;
+                                msg += `• Public Key: ${EMAILJS_CONFIG.publicKey}\n\n`;
+                                msg += 'Vérifiez dans EmailJS :\n';
+                                msg += '• Service ID correct et actif\n';
+                                msg += '• Template ID correct et lié au service\n';
+                                msg += '• Variables du template correspondent\n';
+                                msg += '• Clé publique valide';
+                            }
+                            
                             alert(msg);
 
                             setTimeout(function () {
-                                submitBtn.disabled = false;
-                                submitBtn.textContent = originalText;
-                                submitBtn.style.background = '';
-                            }, 3000);
-                        });
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                });
                     }
 
                     sendEmail();
@@ -1782,59 +2049,70 @@
             }
 
             // menu mobile
-            if (mobileMenuToggle && mobileNav) {
+            if (mobileMenuToggle && mobileNav && mobileNavClose) {
                 mobileMenuToggle.addEventListener('click', function () {
-                    mobileMenuToggle.classList.toggle('active');
-                    mobileNav.classList.toggle('active');
-                    document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
-                });
-            }
-            if (mobileNavClose) {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
                 mobileNavClose.addEventListener('click', function () {
-                    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-                    if (mobileNav) mobileNav.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+            mobileMenuToggle.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        // Ne pas empêcher la navigation
+                mobileMenuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                        // Laisser le navigateur suivre le lien normalement
+            });
+        });
+
+                // Fermer le menu en cliquant en dehors
+                mobileNav.addEventListener('click', function(e) {
+                    if (e.target === mobileNav) {
+                        mobileMenuToggle.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
                 });
             }
-            document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-                link.addEventListener('click', function () {
-                    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-                    if (mobileNav) mobileNav.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            });
 
-            // FAQ Toggle
-            document.querySelectorAll('.faq-question').forEach(question => {
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
                 question.addEventListener('click', function () {
-                    const faqItem = this.parentElement;
-                    const answer = faqItem.querySelector('.faq-answer');
-
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        if (item !== faqItem) {
-                            item.classList.remove('active');
+                const faqItem = this.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
                             const ans = item.querySelector('.faq-answer');
                             if (ans) ans.classList.remove('active');
-                        }
-                    });
-
-                    faqItem.classList.toggle('active');
-                    if (answer) answer.classList.toggle('active');
-                });
-            });
-
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
+                });
+                
+                faqItem.classList.toggle('active');
+                    if (answer) answer.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
                 });
             });
         });
     </script>
-        // CONFIGURATION FORMSPREE
 </body>
 </html>
