@@ -117,6 +117,12 @@
             align-items: center;
         }
 
+        @media (max-width: 768px) {
+            .mobile-nav {
+                background: rgba(255, 255, 255, 0.98);
+            }
+        }
+
         .mobile-nav.active {
             left: 0;
         }
@@ -1147,6 +1153,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background: #ffffff url('unnamed.jpg') center center/cover no-repeat scroll;
+            }
+
+            body::before {
+                background-attachment: scroll;
+                background: rgba(255, 255, 255, 0.3);
+            }
+
             header {
                 padding: 1rem 3%;
             }
