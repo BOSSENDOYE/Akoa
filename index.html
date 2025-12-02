@@ -1209,6 +1209,7 @@
                 background: #ffffff url('unnamed.jpg') center center/cover no-repeat scroll !important;
                 background-size: cover !important;
                 background-position: center !important;
+                min-height: 100vh !important;
             }
 
             body::before {
@@ -1220,6 +1221,27 @@
                 width: 100% !important;
                 height: 100% !important;
                 z-index: -1 !important;
+            }
+
+            /* Rendre les sections transparentes pour voir le background */
+            .hero {
+                background: transparent !important;
+            }
+
+            .services {
+                background: rgba(255, 255, 255, 0.4) !important;
+            }
+
+            .about {
+                background: rgba(255, 255, 255, 0.4) !important;
+            }
+
+            .contact {
+                background: rgba(255, 255, 255, 0.4) !important;
+            }
+
+            .service-card {
+                background: rgba(255, 255, 255, 0.85) !important;
             }
 
             header {
