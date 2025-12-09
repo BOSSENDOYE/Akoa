@@ -307,47 +307,11 @@
             padding: 0 5%;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -250px;
-            right: -250px;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(200, 200, 200, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: -200px;
-            left: -200px;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-30px) scale(1.1); }
-        }
-
         .hero-content {
             max-width: 1200px;
             text-align: center;
             z-index: 1;
             position: relative;
-        }
-
-        /* Floating People with Computers */
-        .floating-shape {
-            position: absolute;
-            backdrop-filter: blur(10px);
-            animation: float 12s ease-in-out infinite;
         }
 
         /* Person 1 - Sitting at desk */
@@ -356,7 +320,7 @@
             height: 100px;
             top: 15%;
             left: 8%;
-            animation-delay: 0s;
+ 0s;
         }
         .floating-shape:nth-child(1)::before {
             content: '';
@@ -379,7 +343,7 @@
             top: 45px;
             left: 35px;
             box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2s ease-in-out infinite alternate;
+ 2s ease-in-out infinite alternate;
         }
 
         /* Person 2 - Standing with laptop */
@@ -388,7 +352,7 @@
             height: 120px;
             top: 55%;
             right: 12%;
-            animation-delay: 2s;
+ 2s;
         }
         .floating-shape:nth-child(2)::before {
             content: '';
@@ -411,7 +375,7 @@
             top: 35px;
             left: 27px;
             box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 1.5s ease-in-out infinite alternate;
+ 1.5s ease-in-out infinite alternate;
         }
 
         /* Person 3 - Coding at computer */
@@ -420,7 +384,7 @@
             height: 110px;
             top: 35%;
             left: 75%;
-            animation-delay: 4s;
+ 4s;
         }
         .floating-shape:nth-child(3)::before {
             content: '';
@@ -443,7 +407,7 @@
             top: 45px;
             left: 40px;
             box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2.5s ease-in-out infinite alternate;
+ 2.5s ease-in-out infinite alternate;
         }
 
         /* Person 4 - Mobile developer */
@@ -452,7 +416,7 @@
             height: 130px;
             top: 75%;
             left: 18%;
-            animation-delay: 1s;
+ 1s;
         }
         .floating-shape:nth-child(4)::before {
             content: '';
@@ -475,7 +439,7 @@
             top: 35px;
             left: 32px;
             box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 1.8s ease-in-out infinite alternate;
+ 1.8s ease-in-out infinite alternate;
         }
 
         /* Person 5 - Designer with tablet */
@@ -484,7 +448,7 @@
             height: 115px;
             top: 25%;
             right: 8%;
-            animation-delay: 3s;
+ 3s;
         }
         .floating-shape:nth-child(5)::before {
             content: '';
@@ -507,7 +471,7 @@
             top: 45px;
             left: 35px;
             box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 2.2s ease-in-out infinite alternate;
+ 2.2s ease-in-out infinite alternate;
         }
 
         /* Person 6 - Programmer with dual screens */
@@ -516,7 +480,7 @@
             height: 105px;
             top: 65%;
             left: 65%;
-            animation-delay: 5s;
+ 5s;
         }
         .floating-shape:nth-child(6)::before {
             content: '';
@@ -539,7 +503,7 @@
             top: 45px;
             left: 40px;
             box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
-            animation: screenGlow 1.3s ease-in-out infinite alternate;
+ 1.3s ease-in-out infinite alternate;
         }
 
         @keyframes float {
@@ -570,11 +534,8 @@
             font-size: 4.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 50%, #E9B3FB 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideDown 1s ease-out;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         @keyframes slideDown {
@@ -590,10 +551,9 @@
 
         .hero p {
             font-size: 1.5rem;
-            color: #1a1a1a;
+            color: #ffffff;
             margin-bottom: 3rem;
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
-            animation: slideUp 1s ease-out 0.3s both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         @keyframes slideUp {
@@ -618,7 +578,293 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(111, 0, 255, 0.4);
-            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(111, 0, 255, 0.6);
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+        }
+
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Floating People with Computers */
+        .floating-shape {
+            position: absolute;
+            backdrop-filter: blur(10px);
+ 12s ease-in-out infinite;
+        }
+
+        /* Person 1 - Sitting at desk */
+        .floating-shape:nth-child(1) {
+            width: 120px;
+            height: 100px;
+            top: 15%;
+            left: 8%;
+ 0s;
+        }
+        .floating-shape:nth-child(1)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(59, 2, 112, 0.3);
+        }
+        .floating-shape:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background: linear-gradient(135deg, #6F00FF 0%, #E9B3FB 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+ 2s ease-in-out infinite alternate;
+        }
+
+        /* Person 2 - Standing with laptop */
+        .floating-shape:nth-child(2) {
+            width: 100px;
+            height: 120px;
+            top: 55%;
+            right: 12%;
+ 2s;
+        }
+        .floating-shape:nth-child(2)::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 25px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #3B0270 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 5px;
+            left: 25px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 30px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 3px;
+            top: 35px;
+            left: 27px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+ 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Person 3 - Coding at computer */
+        .floating-shape:nth-child(3) {
+            width: 140px;
+            height: 110px;
+            top: 35%;
+            left: 75%;
+ 4s;
+        }
+        .floating-shape:nth-child(3)::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 32px;
+            background: linear-gradient(135deg, #3B0270 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 8px;
+            left: 15px;
+            box-shadow: 0 2px 4px rgba(59, 2, 112, 0.3);
+        }
+        .floating-shape:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 35px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+ 2.5s ease-in-out infinite alternate;
+        }
+
+        /* Person 4 - Mobile developer */
+        .floating-shape:nth-child(4) {
+            width: 90px;
+            height: 130px;
+            top: 75%;
+            left: 18%;
+ 1s;
+        }
+        .floating-shape:nth-child(4)::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 22px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #6F00FF 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(4)::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 8px;
+            top: 35px;
+            left: 32px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+ 1.8s ease-in-out infinite alternate;
+        }
+
+        /* Person 5 - Designer with tablet */
+        .floating-shape:nth-child(5) {
+            width: 110px;
+            height: 115px;
+            top: 25%;
+            right: 8%;
+ 3s;
+        }
+        .floating-shape:nth-child(5)::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 28px;
+            background: linear-gradient(135deg, #3B0270 0%, #E9B3FB 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 12px;
+            left: 18px;
+            box-shadow: 0 2px 4px rgba(59, 2, 112, 0.3);
+        }
+        .floating-shape:nth-child(5)::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 5px;
+            top: 45px;
+            left: 35px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+ 2.2s ease-in-out infinite alternate;
+        }
+
+        /* Person 6 - Programmer with dual screens */
+        .floating-shape:nth-child(6) {
+            width: 160px;
+            height: 105px;
+            top: 65%;
+            left: 65%;
+ 5s;
+        }
+        .floating-shape:nth-child(6)::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 35px;
+            background: linear-gradient(135deg, #E9B3FB 0%, #3B0270 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 5px;
+            left: 10px;
+            box-shadow: 0 2px 4px rgba(233, 179, 251, 0.3);
+        }
+        .floating-shape:nth-child(6)::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 25px;
+            background: linear-gradient(135deg, #6F00FF 0%, #3B0270 100%);
+            border-radius: 3px;
+            top: 45px;
+            left: 40px;
+            box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4);
+ 1.3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-25px) rotate(5deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-5deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-35px) rotate(3deg) scale(1.02);
+            }
+        }
+
+        @keyframes screenGlow {
+            0% {
+                box-shadow: 0 2px 8px rgba(111, 0, 255, 0.4), 0 0 10px rgba(111, 0, 255, 0.2);
+            }
+            100% {
+                box-shadow: 0 2px 12px rgba(111, 0, 255, 0.6), 0 0 20px rgba(111, 0, 255, 0.4);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #3B0270 0%, #6F00FF 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(111, 0, 255, 0.4);
         }
 
         .cta-button:hover {
@@ -1204,44 +1450,90 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                background-attachment: scroll !important;
-                background: #ffffff url('unnamed.jpg') center center/cover no-repeat scroll !important;
+            * {
+                -webkit-background-size: cover !important;
+                -moz-background-size: cover !important;
+                -o-background-size: cover !important;
+            }
+
+            html {
+                background: url('unnamed.jpg') center center/cover no-repeat scroll !important;
                 background-size: cover !important;
-                background-position: center !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+                background-attachment: scroll !important;
                 min-height: 100vh !important;
+                height: 100% !important;
+            }
+
+            body {
+                background: url('unnamed.jpg') center center/cover no-repeat scroll !important;
+                background-color: transparent !important;
+                background-size: cover !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+                background-attachment: scroll !important;
+                min-height: 100vh !important;
+                height: 100% !important;
+                position: relative !important;
             }
 
             body::before {
-                background-attachment: scroll !important;
-                background: rgba(255, 255, 255, 0.3) !important;
+                content: '' !important;
                 position: fixed !important;
                 top: 0 !important;
                 left: 0 !important;
                 width: 100% !important;
                 height: 100% !important;
-                z-index: -1 !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+                z-index: -2 !important;
+                pointer-events: none !important;
             }
 
             /* Rendre les sections transparentes pour voir le background */
             .hero {
-                background: transparent !important;
+                background: rgba(255, 255, 255, 0.15) !important;
+                background-image: none !important;
             }
 
             .services {
-                background: rgba(255, 255, 255, 0.4) !important;
+                background: rgba(255, 255, 255, 0.9) !important;
+                background-image: none !important;
             }
 
             .about {
-                background: rgba(255, 255, 255, 0.4) !important;
+                background: rgba(255, 255, 255, 0.9) !important;
+                background-image: none !important;
             }
 
             .contact {
-                background: rgba(255, 255, 255, 0.4) !important;
+                background: rgba(255, 255, 255, 0.9) !important;
+                background-image: none !important;
+            }
+
+            .portfolio {
+                background: rgba(255, 255, 255, 0.9) !important;
+                background-image: none !important;
             }
 
             .service-card {
+                background: rgba(255, 255, 255, 0.9) !important;
+                background-image: none !important;
+            }
+
+            .portfolio-item {
+                background: rgba(255, 255, 255, 0.9) !important;
+                background-image: none !important;
+            }
+
+            .contact-form {
                 background: rgba(255, 255, 255, 0.85) !important;
+                background-image: none !important;
+            }
+
+            .contact-item {
+                background: rgba(255, 255, 255, 0.85) !important;
+                background-image: none !important;
             }
 
             header {
@@ -1272,7 +1564,8 @@
 
             .hero p {
                 font-size: 1.2rem;
-                color: #2a2a2a;
+                color: #ffffff;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
             }
 
             .nav-links {
@@ -1395,6 +1688,8 @@
             .hero p {
                 font-size: 1rem;
                 padding: 0 1rem;
+                color: #ffffff;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
             }
 
             .cta-button {
@@ -1518,9 +1813,6 @@
     </div>
 
     <section id="accueil" class="hero">
-        <div class="floating-shape">💻</div>
-        <div class="floating-shape">🚀</div>
-        <div class="floating-shape">🔧</div>
         <div class="hero-content">
             <h1>Transformez Votre Vision Digitale avec Akoa</h1>
             <p>Votre partenaire digital de confiance à Dakar • Solutions web innovantes • Design sur-mesure pour PME et startups au Sénégal</p>
